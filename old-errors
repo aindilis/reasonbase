@@ -1,0 +1,209 @@
+
+-----------------
+Login to http://192.168.1.100/reasonbase/tarawatch/index.php?action=submitlogin&title=Special:Userlogin failed.
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 849
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0x10e4c40)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 216
+
+-----------------
+Login to http://192.168.1.100/reasonbase/tarawatch/index.php?action=submitlogin&title=Special:Userlogin failed.
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 849
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0x179ac40)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 216
+
+-----------------
+Login to http://192.168.1.100/reasonbase/tarawatch/index.php?action=submitlogin&title=Special:Userlogin failed.
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 849
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0x98cc40)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 216
+
+-----------------
+Login to http://192.168.1.100/reasonbase/tarawatch/index.php?action=submitlogin&title=Special:Userlogin failed.
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 849
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0x2061c40)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 216
+
+-----------------
+Could not connect to MediaWiki to get login token.
+
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 825
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0x13e71c8)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 226
+$res = bless( {
+                '_request' => bless( {
+                                       '_headers' => bless( {
+                                                              'user-agent' => 'WWW::Mediawiki::Client/0.31'
+                                                            }, 'HTTP::Headers' ),
+                                       '_uri_canonical' => bless( do{\(my $o = 'http://irish-civil-rights-network.org/mediawiki/index.php?action=submitlogin&title=Special:Userlogin')}, 'URI::http' ),
+                                       '_content' => '',
+                                       '_uri' => $res->{'_request'}{'_uri_canonical'},
+                                       '_method' => 'GET'
+                                     }, 'HTTP::Request' ),
+                '_content' => '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /mediawiki/index.php was not found on this server.</p>
+<hr>
+<address>Apache/2.4.7 (Ubuntu) Server at irish-civil-rights-network.org Port 80</address>
+</body></html>
+',
+                '_msg' => 'Not Found',
+                '_rc' => 404,
+                '_protocol' => 'HTTP/1.1',
+                '_headers' => bless( {
+                                       'connection' => 'close',
+                                       'content-type' => 'text/html; charset=iso-8859-1',
+                                       'client-peer' => '173.165.36.109:80',
+                                       '::std_case' => {
+                                                         'client-date' => 'Client-Date',
+                                                         'client-peer' => 'Client-Peer',
+                                                         'set-cookie' => 'Set-Cookie',
+                                                         'client-response-num' => 'Client-Response-Num',
+                                                         'set-cookie2' => 'Set-Cookie2',
+                                                         'title' => 'Title'
+                                                       },
+                                       'content-length' => '312',
+                                       'date' => 'Thu, 09 Apr 2015 17:33:50 GMT',
+                                       'title' => '404 Not Found',
+                                       'client-date' => 'Thu, 09 Apr 2015 17:34:04 GMT',
+                                       'server' => 'Apache/2.4.7 (Ubuntu)',
+                                       'client-response-num' => 1
+                                     }, 'HTTP::Headers' )
+              }, 'HTTP::Response' );
+
+$cookie_jar = undef;
+
+
+-----------------
+Could not connect to MediaWiki to get login token.
+
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 825
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0x163c1c8)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 226
+$res = bless( {
+                '_protocol' => 'HTTP/1.1',
+                '_rc' => 401,
+                '_msg' => 'Unauthorized',
+                '_request' => bless( {
+                                       '_uri' => bless( do{\(my $o = 'http://devel.irish-civil-rights-network.org/mediawiki/index.php?action=submitlogin&title=Special:Userlogin')}, 'URI::http' ),
+                                       '_uri_canonical' => $res->{'_request'}{'_uri'},
+                                       '_method' => 'GET',
+                                       '_headers' => bless( {
+                                                              'user-agent' => 'WWW::Mediawiki::Client/0.31'
+                                                            }, 'HTTP::Headers' ),
+                                       '_content' => ''
+                                     }, 'HTTP::Request' ),
+                '_headers' => bless( {
+                                       'content-type' => 'text/html; charset=iso-8859-1',
+                                       '::std_case' => {
+                                                         'set-cookie2' => 'Set-Cookie2',
+                                                         'title' => 'Title',
+                                                         'client-date' => 'Client-Date',
+                                                         'client-peer' => 'Client-Peer',
+                                                         'client-response-num' => 'Client-Response-Num',
+                                                         'set-cookie' => 'Set-Cookie'
+                                                       },
+                                       'content-length' => '482',
+                                       'client-peer' => '173.165.36.109:80',
+                                       'server' => 'Apache/2.4.7 (Ubuntu)',
+                                       'client-response-num' => 1,
+                                       'connection' => 'close',
+                                       'title' => '401 Unauthorized',
+                                       'client-date' => 'Thu, 09 Apr 2015 17:35:41 GMT',
+                                       'date' => 'Thu, 09 Apr 2015 17:35:27 GMT',
+                                       'www-authenticate' => 'Basic realm="Authentication required"'
+                                     }, 'HTTP::Headers' ),
+                '_content' => '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>401 Unauthorized</title>
+</head><body>
+<h1>Unauthorized</h1>
+<p>This server could not verify that you
+are authorized to access the document
+requested.  Either you supplied the wrong
+credentials (e.g., bad password), or your
+browser doesn\'t understand how to supply
+the credentials required.</p>
+<hr>
+<address>Apache/2.4.7 (Ubuntu) Server at devel.irish-civil-rights-network.org Port 80</address>
+</body></html>
+'
+              }, 'HTTP::Response' );
+
+$cookie_jar = undef;
+
+
+-----------------
+Could not connect to MediaWiki to get login token.
+
+
+Trace begun at /usr/share/perl5/WWW/Mediawiki/Client.pm line 825
+WWW::Mediawiki::Client::do_login('WWW::Mediawiki::Client=HASH(0xebdd28)') called at /usr/bin/mvs line 91
+eval {...} at /usr/bin/mvs line 91
+main::main('login') called at /usr/bin/mvs line 226
+$res = bless( {
+                '_rc' => 401,
+                '_headers' => bless( {
+                                       'content-length' => '471',
+                                       'client-response-num' => 1,
+                                       'date' => 'Mon, 07 Dec 2015 07:27:04 GMT',
+                                       '::std_case' => {
+                                                         'set-cookie2' => 'Set-Cookie2',
+                                                         'title' => 'Title',
+                                                         'set-cookie' => 'Set-Cookie',
+                                                         'client-response-num' => 'Client-Response-Num',
+                                                         'client-peer' => 'Client-Peer',
+                                                         'client-date' => 'Client-Date'
+                                                       },
+                                       'content-type' => 'text/html; charset=iso-8859-1',
+                                       'client-peer' => '173.165.36.109:80',
+                                       'client-date' => 'Mon, 07 Dec 2015 07:27:59 GMT',
+                                       'connection' => 'close',
+                                       'server' => 'Apache/2.4.7 (Ubuntu)',
+                                       'title' => '401 Unauthorized',
+                                       'www-authenticate' => 'Basic realm="Authentication required"'
+                                     }, 'HTTP::Headers' ),
+                '_protocol' => 'HTTP/1.1',
+                '_content' => '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>401 Unauthorized</title>
+</head><body>
+<h1>Unauthorized</h1>
+<p>This server could not verify that you
+are authorized to access the document
+requested.  Either you supplied the wrong
+credentials (e.g., bad password), or your
+browser doesn\'t understand how to supply
+the credentials required.</p>
+<hr>
+<address>Apache/2.4.7 (Ubuntu) Server at mediawiki.icrn.frdcsa.net Port 80</address>
+</body></html>
+',
+                '_msg' => 'Unauthorized',
+                '_request' => bless( {
+                                       '_method' => 'GET',
+                                       '_headers' => bless( {
+                                                              'user-agent' => 'WWW::Mediawiki::Client/0.31'
+                                                            }, 'HTTP::Headers' ),
+                                       '_uri' => bless( do{\(my $o = 'http://mediawiki.icrn.frdcsa.net/mediawiki/index.php?action=submitlogin&title=Special:Userlogin')}, 'URI::http' ),
+                                       '_uri_canonical' => $res->{'_request'}{'_uri'},
+                                       '_content' => ''
+                                     }, 'HTTP::Request' )
+              }, 'HTTP::Response' );
+
+$cookie_jar = undef;
+

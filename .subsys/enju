@@ -1,0 +1,18 @@
+ Enju is an implementation of a parsing algorithm for probabilistic
+ unification-based grammars. With a wide-coverage probabilistic HPSG
+ grammar [1,2,3] and an efficient parsing algorithm [4,5], this parser
+ can effectively analyze the syntactic/semantic structure of an
+ English sentence and provide the user with predicate-argument
+ relations among the words. Those outputs would be especially useful
+ for high-level NLP applications including information extraction,
+ automatic summarization, and question answering, where the "meaning"
+ of a sentence plays a central role. The main features of the parser
+ are the following:
+ .
+ + Includes a wide-coverage HPSG grammar and its probabilistic model
+   (for details see this page).
+ + Uses an efficient parsing algorithm.
+ + Allows the user to customize the grammar.
+ + Accepts raw texts as well as tokenized texts with part-of-speech
+   tags.
+

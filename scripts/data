@@ -1,0 +1,28 @@
+$VAR1 =
+  [
+   [
+    "He runs the company.",
+"ROOT	ROOT	ROOT	ROOT	-1	ROOT	runs	run	VBZ	VB	1
+runs	run	VBZ	VB	1	ARG1	He	he	PRP	PRP	0
+runs	run	VBZ	VB	1	ARG2	company 	company 	NN	NN	3
+the	the	DT	DT	2	MODIFY	company 	company	NN	NN	3",
+   ],
+   [
+    "The company is run by him.",
+"ROOT	ROOT	ROOT	ROOT	-1	ROOT	is	be	VBZ	VB	2
+is	be	VBZ	VB	2	ARG1	company	company	NN	NN	1
+is	be	VBZ	VB	2	ARG2	run	run	VBN	VB	3
+run	run	VBN	VB	3	ARG1	him	him	PRP	PRP	5
+run	run	VBN	VB	3	ARG2	company	company	NN	NN	1
+The	the	DT	DT	0	MODIFY	company	company	NN	NN	1",
+   ],
+   [
+    "The company that he runs is small.",
+"ROOT	ROOT	ROOT	ROOT	-1	ROOT	is	be	VBZ	VB	5
+is	be	VBZ	VB	5	ARG1	company	company	NN	NN	1
+is	be	VBZ	VB	5	ARG2	small	small	JJ	JJ	6
+The	the	DT	DT	0	MODIFY	company	company	NN	NN	1
+runs	run	VBZ	VB	4	ARG1	he	he	PRP	PRP	3
+runs	run	VBZ	VB	4	ARG2	company	company	NN	NN	1",
+   ],
+  ];

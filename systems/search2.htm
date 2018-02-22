@@ -1,0 +1,986 @@
+<html><head><style type="text/css">
+<!--
+	.goohl0{color:black;background-color:#ffff66}
+	.goohl1{color:black;background-color:#A0FFFF}
+	.goohl2{color:black;background-color:#99ff99}
+	.goohl3{color:black;background-color:#ff9999}
+-->
+</style><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="ModDate" content="D:20020919150603-04'00'"><meta name="CreationDate" content="D:20020909101825-04'00'"><meta name="Author" content="Jean-Francois Delannoy"><title>Argumentation Mark-Up: A Proposal</title></head><body bgcolor="#ffffff" link="blue" vlink="blue"><table border="1" width="100%"><tbody><tr><td><table color="#ffffff" bgcolor="#ffffff" border="1" cellpadding="10" cellspacing="0" width="100%"><tbody><tr><td><font color="black" face="arial,sans-serif" size="-1">This is the html version of the file <a href="http://acl.ldc.upenn.edu/W/W99/W99-0303.pdf"><font color="blue">http://acl.ldc.upenn.edu/W/W99/W99-0303.pdf</font></a>.<br> <b><font color="#0039b6">G</font> <font color="#c41200">o</font> <font color="#f3c518">o</font> <font color="#0039b6">g</font> <font color="#30a72f">l</font> <font color="#c41200">e</font></b> automatically generates html versions of documents as we crawl the web.<br>To link to or bookmark this page, use the following url: <code>http://www.google.com/search?q=cache:ivy0m3nE01sJ:acl.ldc.upenn.edu/W/W99/W99-0303.pdf+logical+fallacy+recognizer+software+site:edu&amp;hl=en</code></font><br><br><center><font size="-2"><i>Google is not affiliated with the authors of this page nor responsible for its content.</i></font></center></td></tr>
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><font color="black" face="arial,sans-serif" size="-1">These search terms have been highlighted:&nbsp;</font></td><td bgcolor="#ffff66"><b><font color="black" face="arial,sans-serif" size="-1">logical&nbsp;</font></b></td><td bgcolor="#a0ffff"><b><font color="black" face="arial,sans-serif" size="-1">fallacy&nbsp;</font></b></td><td bgcolor="#99ff99"><b><font color="black" face="arial,sans-serif" size="-1">recognizer&nbsp;</font></b></td><td bgcolor="#ff9999"><b><font color="black" face="arial,sans-serif" size="-1">software&nbsp;</font></b></td></tr></tbody></table>
+</td></tr></tbody></table></td></tr></tbody></table>
+<hr>
+
+
+
+
+
+
+
+
+
+<table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="1"><b>Page 1</b></a></font></td></tr></tbody></table><font face="Times" size="4"><span style="font-size: 26px; font-family: Times;">
+<div style="position: absolute; top: 293px; left: 257px;"><nobr><b>Argumentation Mark-Up: A Proposal </b></nobr></div>
+</span></font>
+<font face="Times" size="4"><span style="font-size: 20px; font-family: Times;">
+<div style="position: absolute; top: 344px; left: 369px;"><nobr><b>Jean-Franqois Delannoy </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 373px; left: 291px;"><nobr>RES International and University of Ottawa, Ottawa, Canada </nobr></div>
+</span></font>
+<font face="Times" size="4"><span style="font-size: 20px; font-family: Times;">
+<div style="position: absolute; top: 405px; left: 109px;"><nobr><b>Abstract </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 447px; left: 109px;"><nobr>This is a proposal for a an XML mark-up of argumentation. The annotation can be used to help the reader (e.g. by means of </nobr></div>
+<div style="position: absolute; top: 464px; left: 109px;"><nobr>selective highlighting or diagramming), and for further processing (summarization, critique,  use  in  information retrieval). </nobr></div>
+<div style="position: absolute; top: 481px; left: 109px;"><nobr>The article proposes a  set of markers derived  from manual corpus annotation,  exemplifies their use,  describes  a  way  to </nobr></div>
+<div style="position: absolute; top: 498px; left: 109px;"><nobr>assign them using surface cues and limited syntax for scoping, and suggests further directions, including an acquisition tool, </nobr></div>
+<div style="position: absolute; top: 514px; left: 109px;"><nobr>the application of machine learning, and a collaborative DTD definition task. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 18px; font-family: Times;">
+<div style="position: absolute; top: 548px; left: 110px;"><nobr><b>1. Introduction </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 580px; left: 109px;"><nobr>Computational  linguistics  has  had  a  long  interest  in </nobr></div>
+<div style="position: absolute; top: 597px; left: 109px;"><nobr>discourse  representation, but generally on  the structure of </nobr></div>
+<div style="position: absolute; top: 614px; left: 109px;"><nobr>monologue  or  dialogue  rather  than  on  content  analysis, </nobr></div>
+<div style="position: absolute; top: 631px; left: 109px;"><nobr>rhetoric,  or argumentation proper.  There  is  an  increasing </nobr></div>
+<div style="position: absolute; top: 647px; left: 109px;"><nobr>amount of work on mark-up, that is,  indicating  locally in </nobr></div>
+<div style="position: absolute; top: 664px; left: 109px;"><nobr>the  text  the  linguistic  information -  rather  than  in  some </nobr></div>
+<div style="position: absolute; top: 681px; left: 109px;"><nobr>knowledge-representation  formalism.  Mark-up  can  be </nobr></div>
+<div style="position: absolute; top: 697px; left: 109px;"><nobr>designed  for  the  reader,  for  a  browser  (in  charge  of </nobr></div>
+<div style="position: absolute; top: 715px; left: 109px;"><nobr>displaying the information according to some template), or </nobr></div>
+<div style="position: absolute; top: 731px; left: 109px;"><nobr>for further processing (a summarizer, a semantic analyzer, </nobr></div>
+<div style="position: absolute; top: 748px; left: 109px;"><nobr>a reasoning system) -  or a combination of these. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 773px; left: 111px;"><nobr><i><b>1.1. Reading aids </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 802px; left: 108px;"><nobr>Active reading involves a task of text mapping, selecting, </nobr></div>
+<div style="position: absolute; top: 819px; left: 109px;"><nobr>anchoring  and  short-term  memorization,  all  the  more </nobr></div>
+<div style="position: absolute; top: 836px; left: 109px;"><nobr>taxing  when  reading  a  scarcely-formatted  text.  Speed </nobr></div>
+<div style="position: absolute; top: 853px; left: 109px;"><nobr>reading  techniques  (Judson  &amp;  Schaill  73)  address  in  fact </nobr></div>
+<div style="position: absolute; top: 870px; left: 109px;"><nobr>not  only  speed  per  se,  but  also  efficient  information </nobr></div>
+<div style="position: absolute; top: 886px; left: 109px;"><nobr>extraction  and critiquing.  (Note:  I  am  much  in  favour of </nobr></div>
+<div style="position: absolute; top: 903px; left: 109px;"><nobr>giving  speed  reading  more  recognition  --  and  I  even </nobr></div>
+<div style="position: absolute; top: 920px; left: 108px;"><nobr>practice  it  live  in  a  live  radio  program  on  literature,  to </nobr></div>
+<div style="position: absolute; top: 937px; left: 108px;"><nobr>quickly select passages.). More people have to read more </nobr></div>
+<div style="position: absolute; top: 953px; left: 108px;"><nobr>text,  and  often  this  cannot  be  done  in  integral  reading </nobr></div>
+<div style="position: absolute; top: 970px; left: 108px;"><nobr>mode (cf.  the idea, in Carver 90, of "gear shifts" between </nobr></div>
+<div style="position: absolute; top: 987px; left: 108px;"><nobr>six reading modes).  Highlighting helps reading,  as seen in </nobr></div>
+<div style="position: absolute; top: 1003px; left: 108px;"><nobr>common  experience  (also  see  numerous  references  in </nobr></div>
+<div style="position: absolute; top: 1020px; left: 108px;"><nobr>Ostler  98).  With  a  rich  and  appropriate  annotation,  the </nobr></div>
+<div style="position: absolute; top: 1037px; left: 107px;"><nobr>reader has a better idea of what is important in some given </nobr></div>
+<div style="position: absolute; top: 1054px; left: 108px;"><nobr>respect, and retention  is better.  Then, it may well be useful </nobr></div>
+<div style="position: absolute; top: 1070px; left: 108px;"><nobr>to  1)  develop  a  powerful  reader-oriented  annotation </nobr></div>
+<div style="position: absolute; top: 1087px; left: 108px;"><nobr>system,  and  2)  implement  automatic  highlighting  or </nobr></div>
+<div style="position: absolute; top: 1103px; left: 108px;"><nobr>interactive assisted annotation. </nobr></div>
+<div style="position: absolute; top: 1137px; left: 108px;"><nobr>Those heavy readers  can be helped more appropriately by </nobr></div>
+<div style="position: absolute; top: 1154px; left: 108px;"><nobr>summaries,  highlighting,  hypertext,  etc. </nobr></div>
+<div style="position: absolute; top: 1154px; left: 377px;"><nobr>All  try  to </nobr></div>
+<div style="position: absolute; top: 1171px; left: 107px;"><nobr>facilitate  access  and  use,  by helping  selective perception </nobr></div>
+<div style="position: absolute; top: 1187px; left: 107px;"><nobr>and  interpretation.  One  should  allow  at  least  multiple </nobr></div>
+<div style="position: absolute; top: 1204px; left: 107px;"><nobr>views  of a  text.  There  is  a  qualitative  difference  of the </nobr></div>
+<div style="position: absolute; top: 1221px; left: 107px;"><nobr>finesse  of  understanding  if one  can  manipulate  text,  or </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 7px; font-family: Times;">
+<div style="position: absolute; top: 552px; left: 482px;"><nobr><i>access </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 549px; left: 525px;"><nobr>essential information (Cremmins 82,  Jewinsky 90), </nobr></div>
+<div style="position: absolute; top: 566px; left: 482px;"><nobr>possibly an  order of magnitude faster.  Those  points  were </nobr></div>
+<div style="position: absolute; top: 583px; left: 482px;"><nobr>addressed  in  a  May  1999  colloquium  organized  by  this </nobr></div>
+<div style="position: absolute; top: 599px; left: 482px;"><nobr>author (Delannoy 99). </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 625px; left: 483px;"><nobr><i><b>1.2. </b></i></nobr></div>
+<div style="position: absolute; top: 625px; left: 542px;"><nobr><i><b>Processing, </b></i></nobr></div>
+<div style="position: absolute; top: 625px; left: 674px;"><nobr><i><b>modularity, </b></i></nobr></div>
+<div style="position: absolute; top: 625px; left: 800px;"><nobr><i><b>and </b></i></nobr></div>
+<div style="position: absolute; top: 645px; left: 482px;"><nobr><i><b>interchange </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 674px; left: 481px;"><nobr>Corpus annotation has largely addressed text structure and </nobr></div>
+<div style="position: absolute; top: 691px; left: 481px;"><nobr>categorial tagging, but until very recently has been leaving </nobr></div>
+<div style="position: absolute; top: 708px; left: 481px;"><nobr>out  most  linguistic  annotation:  lexical  (word-sense </nobr></div>
+<div style="position: absolute; top: 724px; left: 481px;"><nobr>disambiguation),  syntactic,  sentence  semantic,  passage </nobr></div>
+<div style="position: absolute; top: 741px; left: 481px;"><nobr>semantics.  A  mark-up  standard  would  facilitate  modular </nobr></div>
+<div style="position: absolute; top: 758px; left: 481px;"><nobr>processing  and  interchange  among  teams  working  on </nobr></div>
+<div style="position: absolute; top: 775px; left: 481px;"><nobr>argumentation. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 799px; left: 482px;"><nobr><i><b>1.3 Other work on argumentation </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 829px; left: 480px;"><nobr>There does not seem to be focused work on argumentation </nobr></div>
+<div style="position: absolute; top: 845px; left: 480px;"><nobr>annotation, as distinguished from dialogue structures. </nobr></div>
+<div style="position: absolute; top: 879px; left: 480px;"><nobr>Moulin  95  uses  speech  acts,  but  does  not  discuss </nobr></div>
+<div style="position: absolute; top: 896px; left: 480px;"><nobr>argumentation structure and validity. </nobr></div>
+<div style="position: absolute; top: 929px; left: 480px;"><nobr>The  Global  Document  Annotation  initiative  (GDA),  a </nobr></div>
+<div style="position: absolute; top: 946px; left: 480px;"><nobr>small-team Japanese-German effort to  develop a  wide  set </nobr></div>
+<div style="position: absolute; top: 963px; left: 479px;"><nobr>of  tags;  it  treats  argumentation  marginally,  with  half  a </nobr></div>
+<div style="position: absolute; top: 979px; left: 479px;"><nobr>dozen  causality  relations:  cause,  reason,  motivation, </nobr></div>
+<div style="position: absolute; top: 996px; left: 478px;"><nobr>purpose,  concession,  contrast ....  This  is rather  similar,  in </nobr></div>
+<div style="position: absolute; top: 1013px; left: 479px;"><nobr>fact, to Fillmore-inspired verbal cases, as those used  in the </nobr></div>
+<div style="position: absolute; top: 1030px; left: 478px;"><nobr>clause-level analysis part of Barker et al. 98b. </nobr></div>
+<div style="position: absolute; top: 1063px; left: 478px;"><nobr>The  Text  Encoding  Initiative  (TEI)  will  soon  be </nobr></div>
+<div style="position: absolute; top: 1080px; left: 478px;"><nobr>broadening  its  scope,  so  far  mostly  concerned  with  text </nobr></div>
+<div style="position: absolute; top: 1096px; left: 478px;"><nobr>structure,  but has not circulated  concrete proposals yet on </nobr></div>
+<div style="position: absolute; top: 1113px; left: 477px;"><nobr>discourse. </nobr></div>
+<div style="position: absolute; top: 1147px; left: 477px;"><nobr>The encoding  schemes DR/and  Mate do not  consider the </nobr></div>
+<div style="position: absolute; top: 1163px; left: 477px;"><nobr>question. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 1283px; left: 455px;"><nobr><b>18 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 1363px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="2"><b>Page 2</b></a></font></td></tr></tbody></table></div><font face="Times" size="3"><span style="font-size: 19px; font-family: Times;">
+<div style="position: absolute; top: 1473px; left: 99px;"><nobr><b>2. Argumentation analysis </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 1504px; left: 99px;"><nobr>I  focus  on  argumentation,  which  is,  in  a  way,  the </nobr></div>
+<div style="position: absolute; top: 1521px; left: 99px;"><nobr>articulation  of  discourse  and  content  analyses. </nobr></div>
+<div style="position: absolute; top: 1538px; left: 99px;"><nobr>Argumentation  analysis  is  particularly  represented  in </nobr></div>
+<div style="position: absolute; top: 1554px; left: 100px;"><nobr>critical </nobr></div>
+<div style="position: absolute; top: 1554px; left: 161px;"><nobr>reading </nobr></div>
+<div style="position: absolute; top: 1554px; left: 224px;"><nobr>(of  news, </nobr></div>
+<div style="position: absolute; top: 1554px; left: 316px;"><nobr>editorials, </nobr></div>
+<div style="position: absolute; top: 1554px; left: 395px;"><nobr>political </nobr></div>
+<div style="position: absolute; top: 1571px; left: 100px;"><nobr>communiques,  other  people's  analyses  on  politics  or </nobr></div>
+<div style="position: absolute; top: 1588px; left: 100px;"><nobr>economics, and legal interpretation). </nobr></div>
+<div style="position: absolute; top: 1622px; left: 100px;"><nobr>Argumentation  is  often  not  to  be  treated  in  a  narrow </nobr></div>
+<div style="position: absolute; top: 1639px; left: 100px;"><nobr>predicate-logic framework. It is better account by Toulmin </nobr></div>
+<div style="position: absolute; top: 1655px; left: 100px;"><nobr>et al.  84 (using a combination  of warrants  and  evidence to </nobr></div>
+<div style="position: absolute; top: 1672px; left: 100px;"><nobr>reach a conclusion) rather than, for example, Groarke et al. </nobr></div>
+<div style="position: absolute; top: 1689px; left: 100px;"><nobr>97 (with classical predicate logic, and treating  induction  as </nobr></div>
+<div style="position: absolute; top: 1705px; left: 100px;"><nobr>a  marginal  case).  In fact, a  lot of everyday argumentation </nobr></div>
+<div style="position: absolute; top: 1722px; left: 101px;"><nobr>is based on induction  from models  left implicit, rather than </nobr></div>
+<div style="position: absolute; top: 1739px; left: 100px;"><nobr>deduction  from  clearly  shared  models.  One  tag, </nobr></div>
+<div style="position: absolute; top: 1756px; left: 100px;"><nobr>&lt;FRAMEOFREF&gt;  addresses  analogical  or  newly  created </nobr></div>
+<div style="position: absolute; top: 1471px; left: 474px;"><nobr>models used in a belief/construction. </nobr></div>
+<div style="position: absolute; top: 1505px; left: 474px;"><nobr>In  sum,  the  purpose  of  a  semi-automatic  tracking  and </nobr></div>
+<div style="position: absolute; top: 1521px; left: 474px;"><nobr>analysis of argumentation  includes the following: </nobr></div>
+<div style="position: absolute; top: 1538px; left: 513px;"><nobr>synthesizing claims </nobr></div>
+<div style="position: absolute; top: 1555px; left: 513px;"><nobr>clarifying  claims  in  association  with  the  relevant </nobr></div>
+<div style="position: absolute; top: 1572px; left: 513px;"><nobr>evidence and warrants </nobr></div>
+<div style="position: absolute; top: 1588px; left: 514px;"><nobr>listing the actors' position on an issue (pro, contra) </nobr></div>
+<div style="position: absolute; top: 1605px; left: 513px;"><nobr>pinpointing terminological  conflicts </nobr></div>
+<div style="position: absolute; top: 1622px; left: 513px;"><nobr>visualizing underlying  models of the domain </nobr></div>
+<div style="position: absolute; top: 1638px; left: 513px;"><nobr>singling out non-demonstrative  rhetorical  effects </nobr></div>
+<div style="position: absolute; top: 1655px; left: 487px;"><nobr>- </nobr></div>
+<div style="position: absolute; top: 1655px; left: 513px;"><nobr>coherence checking </nobr></div>
+<div style="position: absolute; top: 1672px; left: 513px;"><nobr>comparing  alternatives  (some  argument  can  be </nobr></div>
+<div style="position: absolute; top: 1689px; left: 513px;"><nobr>shown  to  be better  than  others,  in  absolute  or  for a </nobr></div>
+<div style="position: absolute; top: 1706px; left: 513px;"><nobr>given knowledge base) </nobr></div>
+<div style="position: absolute; top: 1722px; left: 513px;"><nobr>a  critique  of  argumentative  rhetorical  devices, </nobr></div>
+<div style="position: absolute; top: 1739px; left: 513px;"><nobr>including  fallacies. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 19px; font-family: Times;">
+<div style="position: absolute; top: 1808px; left: 101px;"><nobr><b>3. The current tag set </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 15px; font-family: Times;">
+<div style="position: absolute; top: 1866px; left: 115px;"><nobr><i><b>3.1. </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 1865px; left: 148px;"><nobr><i>Introduction </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 1894px; left: 101px;"><nobr><i>The </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 1894px; left: 129px;"><nobr>current
+system of tags is inspired by RST and works on reasoning like Toulmin
+et al. 84 or Walton 96. and from </nobr></div>
+<div style="position: absolute; top: 1911px; left: 101px;"><nobr>manual experiment. </nobr></div>
+<div style="position: absolute; top: 1944px; left: 101px;"><nobr>The four classes of tags are: </nobr></div>
+<div style="position: absolute; top: 1961px; left: 103px;"><nobr>1.  Reasoning and rhetoric </nobr></div>
+<div style="position: absolute; top: 1978px; left: 101px;"><nobr>2.  Modelling: description of the world; actors </nobr></div>
+<div style="position: absolute; top: 1995px; left: 102px;"><nobr>3.  Textual and narrative </nobr></div>
+<div style="position: absolute; top: 2011px; left: 101px;"><nobr>4.  Evaluative </nobr></div>
+<div style="position: absolute; top: 2044px; left: 102px;"><nobr>Classes  1, 2 and 4 are the most characteristic  of our focus on argument; class 3 serves to accommodate text flow, inasmuch </nobr></div>
+<div style="position: absolute; top: 2061px; left: 102px;"><nobr>as it is pertinent to the development of an argument. </nobr></div>
+<div style="position: absolute; top: 2077px; left: 102px;"><nobr>Class 4 tags are assigned by the user, or, in part, by a semantic analyzer + reasoning system if available. </nobr></div>
+<div style="position: absolute; top: 2110px; left: 102px;"><nobr>Remarks: </nobr></div>
+<div style="position: absolute; top: 2128px; left: 127px;"><nobr>&lt;ID&gt; and &lt;REF&gt; can be added to any tag to handle  inter-segment reference. </nobr></div>
+<div style="position: absolute; top: 2144px; left: 127px;"><nobr>&lt;ACTOR&gt; is used to tag an entity, and so plays a directly semantic role, besides its interplay in the discourse analysis. </nobr></div>
+<div style="position: absolute; top: 2162px; left: 128px;"><nobr>Text type: political analysis. Description, evaluation, and scenario. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 15px; font-family: Times;">
+<div style="position: absolute; top: 2204px; left: 116px;"><nobr><i><b>3.2.  The tag set </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 2256px; left: 133px;"><nobr>TYPE </nobr></div>
+<div style="position: absolute; top: 2256px; left: 266px;"><nobr>TAG </nobr></div>
+<div style="position: absolute; top: 2256px; left: 418px;"><nobr>ELEMENTS </nobr></div>
+<div style="position: absolute; top: 2256px; left: 608px;"><nobr>DESCRIPTION </nobr></div>
+<div style="position: absolute; top: 2279px; left: 153px;"><nobr>|.  REASONING AND RHETORIC </nobr></div>
+<div style="position: absolute; top: 2294px; left: 102px;"><nobr><b>Reasoning and </b></nobr></div>
+<div style="position: absolute; top: 2294px; left: 219px;"><nobr>&lt;ASSN&gt; </nobr></div>
+<div style="position: absolute; top: 2294px; left: 573px;"><nobr>assertion </nobr></div>
+<div style="position: absolute; top: 2309px; left: 102px;"><nobr><b>argumentation </b></nobr></div>
+<div style="position: absolute; top: 2326px; left: 219px;"><nobr>&lt;JUSTIF&gt; </nobr></div>
+<div style="position: absolute; top: 2325px; left: 365px;"><nobr>type={ fact, goal, analogy, </nobr></div>
+<div style="position: absolute; top: 2325px; left: 571px;"><nobr>justification </nobr></div>
+<div style="position: absolute; top: 2340px; left: 365px;"><nobr>declaration } </nobr></div>
+<div style="position: absolute; top: 2355px; left: 218px;"><nobr>&lt;EVID&gt; </nobr></div>
+<div style="position: absolute; top: 2355px; left: 572px;"><nobr>evidence </nobr></div>
+<div style="position: absolute; top: 2370px; left: 218px;"><nobr>&lt;BACKGROUND&gt; </nobr></div>
+<div style="position: absolute; top: 2370px; left: 572px;"><nobr>background </nobr></div>
+<div style="position: absolute; top: 2386px; left: 218px;"><nobr>&lt;CONCESSION&gt; </nobr></div>
+<div style="position: absolute; top: 2386px; left: 572px;"><nobr>concession </nobr></div>
+<div style="position: absolute; top: 2401px; left: 218px;"><nobr>&lt;CONTRAST&gt; </nobr></div>
+<div style="position: absolute; top: 2401px; left: 572px;"><nobr>contrast </nobr></div>
+<div style="position: absolute; top: 2415px; left: 217px;"><nobr>&lt;EX&gt; </nobr></div>
+<div style="position: absolute; top: 2415px; left: 364px;"><nobr>reality:  {present, past, virtual, </nobr></div>
+<div style="position: absolute; top: 2415px; left: 572px;"><nobr>example </nobr></div>
+<div style="position: absolute; top: 2480px; left: 449px;"><nobr><b>19 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 2551px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="3"><b>Page 3</b></a></font></td></tr></tbody></table></div><font face="Courier" size="4"><span style="font-size: 20px; font-family: Courier;">
+<div style="position: absolute; top: 2580px; left: 888px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 2616px; left: 889px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 2651px; left: 889px;"><nobr><b>m </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 10px; font-family: Times;">
+<div style="position: absolute; top: 2666px; left: 136px;"><nobr>TYPE </nobr></div>
+<div style="position: absolute; top: 2666px; left: 273px;"><nobr>TAG </nobr></div>
+<div style="position: absolute; top: 2666px; left: 424px;"><nobr>ELEMENTS </nobr></div>
+<div style="position: absolute; top: 2666px; left: 616px;"><nobr>DESCRIPTION </nobr></div>
+<div style="position: absolute; top: 2686px; left: 371px;"><nobr>projected} </nobr></div>
+<div style="position: absolute; top: 2701px; left: 225px;"><nobr>&lt;C-EX&gt; </nobr></div>
+<div style="position: absolute; top: 2716px; left: 225px;"><nobr>&lt;HYP&gt; </nobr></div>
+<div style="position: absolute; top: 2731px; left: 225px;"><nobr>&lt;REL&gt; </nobr></div>
+<div style="position: absolute; top: 2746px; left: 225px;"><nobr>&lt;CONS&gt; </nobr></div>
+<div style="position: absolute; top: 2777px; left: 225px;"><nobr>&lt;CONDITION&gt; </nobr></div>
+<div style="position: absolute; top: 2792px; left: 225px;"><nobr>&lt;ATT-CONS&gt; </nobr></div>
+<div style="position: absolute; top: 2807px; left: 224px;"><nobr>&lt;CONTRA  JUST&gt; </nobr></div>
+<div style="position: absolute; top: 2822px; left: 224px;"><nobr>&lt;PRO&gt; </nobr></div>
+<div style="position: absolute; top: 2837px; left: 224px;"><nobr>&lt;CONTRA&gt; </nobr></div>
+<div style="position: absolute; top: 2852px; left: 224px;"><nobr>&lt;ANN-ASSN&gt; </nobr></div>
+<div style="position: absolute; top: 2867px; left: 224px;"><nobr>&lt;WHATIF&gt; </nobr></div>
+<div style="position: absolute; top: 2882px; left: 224px;"><nobr>&lt;METAPHOR&gt; </nobr></div>
+<div style="position: absolute; top: 2897px; left: 224px;"><nobr>&lt;INTERP&gt; </nobr></div>
+<div style="position: absolute; top: 2957px; left: 104px;"><nobr><b>Rhetorical </b></nobr></div>
+<div style="position: absolute; top: 2928px; left: 224px;"><nobr>&lt;REAS_TECHNIQUE&gt; </nobr></div>
+<div style="position: absolute; top: 2958px; left: 224px;"><nobr>&lt;TROPE&gt; </nobr></div>
+<div style="position: absolute; top: 2973px; left: 224px;"><nobr>&lt;RHETQUES&gt; </nobr></div>
+<div style="position: absolute; top: 2989px; left: 224px;"><nobr>&lt;FOCUS&gt; </nobr></div>
+</span></font>
+<font face="Courier" size="3"><span style="font-size: 11px; font-family: Courier;">
+<div style="position: absolute; top: 3019px; left: 104px;"><nobr><b>Tone </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 10px; font-family: Times;">
+<div style="position: absolute; top: 3018px; left: 224px;"><nobr>&lt;POL&gt; </nobr></div>
+<div style="position: absolute; top: 3052px; left: 157px;"><nobr>2.  MODELLING </nobr></div>
+<div style="position: absolute; top: 3068px; left: 105px;"><nobr><b>Description  </b>of  a  &lt;FRAME  OF  REF&gt; </nobr></div>
+<div style="position: absolute; top: 3083px; left: 104px;"><nobr><b>state of affairs </b></nobr></div>
+<div style="position: absolute; top: 3115px; left: 224px;"><nobr>&lt;SITUATION&gt; </nobr></div>
+<div style="position: absolute; top: 3145px; left: 224px;"><nobr>&lt;BACKGROUND&gt; </nobr></div>
+<div style="position: absolute; top: 3160px; left: 224px;"><nobr>&lt;SCENARIO&gt; </nobr></div>
+<div style="position: absolute; top: 3219px; left: 105px;"><nobr><b>Actors and </b></nobr></div>
+<div style="position: absolute; top: 3234px; left: 105px;"><nobr><b>assertions; </b></nobr></div>
+<div style="position: absolute; top: 3249px; left: 105px;"><nobr><b>polemical stance </b></nobr></div>
+<div style="position: absolute; top: 3190px; left: 224px;"><nobr>&lt;ALTERNATIVE&gt; </nobr></div>
+<div style="position: absolute; top: 3205px; left: 224px;"><nobr>&lt;RECOM&gt; </nobr></div>
+<div style="position: absolute; top: 3219px; left: 224px;"><nobr>&lt;ACTOR&gt; </nobr></div>
+<div style="position: absolute; top: 3265px; left: 223px;"><nobr>&lt;OPP&gt; </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 14px; font-family: Times;">
+<div style="position: absolute; top: 3341px; left: 157px;"><nobr>3. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 10px; font-family: Times;">
+<div style="position: absolute; top: 3343px; left: 174px;"><nobr>TEXTUAL AND NARRATIVE </nobr></div>
+<div style="position: absolute; top: 3359px; left: 105px;"><nobr><b>Text function </b></nobr></div>
+<div style="position: absolute; top: 3359px; left: 223px;"><nobr>&lt;INTRO&gt; </nobr></div>
+<div style="position: absolute; top: 3375px; left: 223px;"><nobr>&lt;DEVT&gt; </nobr></div>
+<div style="position: absolute; top: 3390px; left: 224px;"><nobr>&lt;REPHRASE&gt; </nobr></div>
+<div style="position: absolute; top: 3405px; left: 223px;"><nobr>&lt;CONCL&gt; </nobr></div>
+<div style="position: absolute; top: 3421px; left: 223px;"><nobr>&lt;SUMMARY&gt; </nobr></div>
+<div style="position: absolute; top: 3436px; left: 223px;"><nobr>&lt;QUOTE&gt; </nobr></div>
+<div style="position: absolute; top: 3450px; left: 223px;"><nobr>&lt;REF&gt; </nobr></div>
+<div style="position: absolute; top: 3465px; left: 223px;"><nobr>&lt;LINK&gt; </nobr></div>
+<div style="position: absolute; top: 3480px; left: 223px;"><nobr>&lt;COMMENT&gt; </nobr></div>
+<div style="position: absolute; top: 3495px; left: 105px;"><nobr><b>Narrative </b></nobr></div>
+<div style="position: absolute; top: 3495px; left: 222px;"><nobr>&lt;EVENT&gt; </nobr></div>
+<div style="position: absolute; top: 3509px; left: 105px;"><nobr><b>structure </b></nobr></div>
+<div style="position: absolute; top: 3540px; left: 105px;"><nobr><b>Speech  acts,  actor </b></nobr></div>
+<div style="position: absolute; top: 3555px; left: 105px;"><nobr><b>interaction </b></nobr></div>
+<div style="position: absolute; top: 3526px; left: 222px;"><nobr>&lt;LATEREVENT&gt; </nobr></div>
+<div style="position: absolute; top: 3571px; left: 222px;"><nobr>&lt;QUES&gt; </nobr></div>
+<div style="position: absolute; top: 3586px; left: 222px;"><nobr>&lt;ANSW&gt; </nobr></div>
+<div style="position: absolute; top: 3601px; left: 222px;"><nobr>&lt;REQUEST&gt; </nobr></div>
+<div style="position: absolute; top: 2928px; left: 370px;"><nobr>type =  {modusPonens, </nobr></div>
+<div style="position: absolute; top: 2943px; left: 370px;"><nobr>modusTollens, induction ... } </nobr></div>
+<div style="position: absolute; top: 2989px; left: 370px;"><nobr>type: { stresslmportance, </nobr></div>
+<div style="position: absolute; top: 3004px; left: 370px;"><nobr>stressUrgency } </nobr></div>
+<div style="position: absolute; top: 3019px; left: 370px;"><nobr>tone =  { ironic, derisive, afflicted, </nobr></div>
+<div style="position: absolute; top: 3034px; left: 370px;"><nobr>aggressive} </nobr></div>
+<div style="position: absolute; top: 3069px; left: 370px;"><nobr>ref={  nature, etc.} </nobr></div>
+<div style="position: absolute; top: 3114px; left: 369px;"><nobr>mod= { certain,likely,unlikely,imposs </nobr></div>
+<div style="position: absolute; top: 3130px; left: 370px;"><nobr>ible} </nobr></div>
+<div style="position: absolute; top: 3160px; left: 369px;"><nobr>mod= { certain,likely,unlikely,imposs </nobr></div>
+<div style="position: absolute; top: 3175px; left: 370px;"><nobr>ible} </nobr></div>
+<div style="position: absolute; top: 3219px; left: 369px;"><nobr>name, title </nobr></div>
+<div style="position: absolute; top: 3264px; left: 369px;"><nobr>expose =  { lie, inconsequence} </nobr></div>
+<div style="position: absolute; top: 3279px; left: 369px;"><nobr>strategy =  {counter-facts, bad- </nobr></div>
+<div style="position: absolute; top: 3295px; left: 369px;"><nobr>consequences, bad-outweighs-good, </nobr></div>
+<div style="position: absolute; top: 3310px; left: 368px;"><nobr>untenable-principles, </nobr></div>
+<div style="position: absolute; top: 3324px; left: 369px;"><nobr>badPrecedents } </nobr></div>
+<div style="position: absolute; top: 3541px; left: 368px;"><nobr>BY (element allowed in any tag) </nobr></div>
+<div style="position: absolute; top: 3586px; left: 367px;"><nobr>adeq =  {adequate, beside the point} </nobr></div>
+<div style="position: absolute; top: 2701px; left: 581px;"><nobr>counter-example </nobr></div>
+<div style="position: absolute; top: 2716px; left: 581px;"><nobr>hypothesis </nobr></div>
+<div style="position: absolute; top: 2731px; left: 581px;"><nobr>related to </nobr></div>
+<div style="position: absolute; top: 2746px; left: 581px;"><nobr>enounce consequences (of state of </nobr></div>
+<div style="position: absolute; top: 2761px; left: 581px;"><nobr>affairs) </nobr></div>
+<div style="position: absolute; top: 2776px; left: 581px;"><nobr>premiss or condition </nobr></div>
+<div style="position: absolute; top: 2791px; left: 581px;"><nobr>attitude as a natural consequence </nobr></div>
+<div style="position: absolute; top: 2806px; left: 579px;"><nobr>justification for opposition </nobr></div>
+<div style="position: absolute; top: 2821px; left: 581px;"><nobr>position-pro, position-contra </nobr></div>
+<div style="position: absolute; top: 2836px; left: 581px;"><nobr>contradict-without-justification </nobr></div>
+<div style="position: absolute; top: 2851px; left: 581px;"><nobr>announce assertion </nobr></div>
+<div style="position: absolute; top: 2867px; left: 584px;"><nobr>thought experiment </nobr></div>
+<div style="position: absolute; top: 2882px; left: 580px;"><nobr>metaphor </nobr></div>
+<div style="position: absolute; top: 2897px; left: 581px;"><nobr>interpretation of a  state of affairs, </nobr></div>
+<div style="position: absolute; top: 2912px; left: 580px;"><nobr>a stance, or a declaration </nobr></div>
+<div style="position: absolute; top: 2927px; left: 581px;"><nobr>reasoning technique </nobr></div>
+<div style="position: absolute; top: 2958px; left: 580px;"><nobr>tropes as commonplaces </nobr></div>
+<div style="position: absolute; top: 2973px; left: 581px;"><nobr>(mere) rhetorical question </nobr></div>
+<div style="position: absolute; top: 2988px; left: 580px;"><nobr>use  of  focus  (e.g.  importance  of </nobr></div>
+<div style="position: absolute; top: 3003px; left: 580px;"><nobr>an element in the reasoning) </nobr></div>
+<div style="position: absolute; top: 3018px; left: 580px;"><nobr>varieties of polemic tone </nobr></div>
+<div style="position: absolute; top: 3068px; left: 580px;"><nobr>model  (description of one's  view </nobr></div>
+<div style="position: absolute; top: 3084px; left: 580px;"><nobr>of a  state  of affairs);  its frame of </nobr></div>
+<div style="position: absolute; top: 3099px; left: 580px;"><nobr>reference </nobr></div>
+<div style="position: absolute; top: 3113px; left: 580px;"><nobr>description of the current situation </nobr></div>
+<div style="position: absolute; top: 3144px; left: 580px;"><nobr>background on the situation </nobr></div>
+<div style="position: absolute; top: 3159px; left: 580px;"><nobr>hypothesis on the future </nobr></div>
+<div style="position: absolute; top: 3189px; left: 579px;"><nobr>alternative </nobr></div>
+<div style="position: absolute; top: 3205px; left: 579px;"><nobr>recommendation </nobr></div>
+<div style="position: absolute; top: 3219px; left: 579px;"><nobr>an  actor:  a  person  or  institution </nobr></div>
+<div style="position: absolute; top: 3234px; left: 579px;"><nobr>saying or doing something </nobr></div>
+<div style="position: absolute; top: 3264px; left: 579px;"><nobr>opposition </nobr></div>
+<div style="position: absolute; top: 3359px; left: 579px;"><nobr>introduction </nobr></div>
+<div style="position: absolute; top: 3374px; left: 578px;"><nobr>development </nobr></div>
+<div style="position: absolute; top: 3389px; left: 578px;"><nobr>rephrasing </nobr></div>
+<div style="position: absolute; top: 3405px; left: 578px;"><nobr>conclusion </nobr></div>
+<div style="position: absolute; top: 3420px; left: 578px;"><nobr>summary point </nobr></div>
+<div style="position: absolute; top: 3435px; left: 578px;"><nobr>quoting an actor </nobr></div>
+<div style="position: absolute; top: 3450px; left: 578px;"><nobr>reference </nobr></div>
+<div style="position: absolute; top: 3464px; left: 578px;"><nobr>(hyper)link </nobr></div>
+<div style="position: absolute; top: 3480px; left: 577px;"><nobr>author's comment </nobr></div>
+<div style="position: absolute; top: 3495px; left: 577px;"><nobr>event with actor, time, type  etc. </nobr></div>
+<div style="position: absolute; top: 3525px; left: 577px;"><nobr>later or subsequent event </nobr></div>
+<div style="position: absolute; top: 3540px; left: 577px;"><nobr>author of an utterance, believer of </nobr></div>
+<div style="position: absolute; top: 3556px; left: 577px;"><nobr>an opinion </nobr></div>
+<div style="position: absolute; top: 3571px; left: 577px;"><nobr>question </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 7px; font-family: Times;">
+<div style="position: absolute; top: 3588px; left: 577px;"><nobr>anSWfff </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 10px; font-family: Times;">
+<div style="position: absolute; top: 3601px; left: 577px;"><nobr>requesting information </nobr></div>
+</span></font>
+<font face="Courier" size="3"><span style="font-size: 19px; font-family: Courier;">
+<div style="position: absolute; top: 2760px; left: 891px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 2796px; left: 892px;"><nobr><b>m </b></nobr></div>
+</span></font>
+<font face="Courier" size="3"><span style="font-size: 14px; font-family: Courier;">
+<div style="position: absolute; top: 2830px; left: 892px;"><nobr>m </nobr></div>
+</span></font>
+<font face="Courier" size="3"><span style="font-size: 19px; font-family: Courier;">
+<div style="position: absolute; top: 2867px; left: 893px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 2903px; left: 893px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 2938px; left: 894px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 2974px; left: 894px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3010px; left: 895px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3046px; left: 895px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3082px; left: 895px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3112px; left: 896px;"><nobr><b>u </b></nobr></div>
+<div style="position: absolute; top: 3189px; left: 897px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3220px; left: 897px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3261px; left: 897px;"><nobr><b>m </b></nobr></div>
+<div style="position: absolute; top: 3291px; left: 898px;"><nobr><b>mm </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 3666px; left: 452px;"><nobr><b>20 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 3739px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="4"><b>Page 4</b></a></font></td></tr></tbody></table></div><font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 3859px; left: 131px;"><nobr>TYPE </nobr></div>
+<div style="position: absolute; top: 3859px; left: 268px;"><nobr>TAG </nobr></div>
+<div style="position: absolute; top: 3859px; left: 419px;"><nobr>ELEMENTS </nobr></div>
+<div style="position: absolute; top: 3859px; left: 610px;"><nobr>DESCRIPTION </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 3967px; left: 100px;"><nobr><b>Reference tags </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4042px; left: 100px;"><nobr>Other </nobr></div>
+<div style="position: absolute; top: 3878px; left: 220px;"><nobr>&lt;GIVE-INFO&gt; </nobr></div>
+<div style="position: absolute; top: 3893px; left: 220px;"><nobr>&lt;REBUTTAL&gt; </nobr></div>
+<div style="position: absolute; top: 3924px; left: 221px;"><nobr>&lt;APOLOGY&gt; </nobr></div>
+<div style="position: absolute; top: 3938px; left: 221px;"><nobr>&lt;FLATTERY&gt; </nobr></div>
+<div style="position: absolute; top: 3954px; left: 221px;"><nobr>&lt;SUGGESTION&gt; </nobr></div>
+<div style="position: absolute; top: 3969px; left: 221px;"><nobr>&lt;ID&gt; </nobr></div>
+<div style="position: absolute; top: 3984px; left: 221px;"><nobr>&lt;REF&gt; </nobr></div>
+<div style="position: absolute; top: 4014px; left: 221px;"><nobr>&lt;REFDERE&gt; </nobr></div>
+<div style="position: absolute; top: 4044px; left: 221px;"><nobr>&lt;SOURCE&gt; </nobr></div>
+<div style="position: absolute; top: 4077px; left: 153px;"><nobr>4. EVALUATIVE </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 4093px; left: 101px;"><nobr><b><b><span class="goohl0">Logical</span></b> evaluation, </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4094px; left: 221px;"><nobr>&lt;GOOD ARG&gt; </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 4108px; left: 101px;"><nobr><b>including fallacies </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4125px; left: 221px;"><nobr>&lt;<b><span class="goohl1">FALLACY</span></b>&gt; </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 4275px; left: 101px;"><nobr><b>Reader's  position </b></nobr></div>
+<div style="position: absolute; top: 4290px; left: 101px;"><nobr><b>and comments </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4200px; left: 221px;"><nobr>&lt;CONTRAD&gt; </nobr></div>
+<div style="position: absolute; top: 4215px; left: 220px;"><nobr>&lt;CONTRAD  EXT&gt; </nobr></div>
+<div style="position: absolute; top: 4246px; left: 220px;"><nobr>&lt;COMMONPLACE&gt; </nobr></div>
+<div style="position: absolute; top: 4276px; left: 220px;"><nobr>&lt;AGREE&gt; </nobr></div>
+<div style="position: absolute; top: 4307px; left: 220px;"><nobr>&lt;DISAG&gt; </nobr></div>
+<div style="position: absolute; top: 4321px; left: 220px;"><nobr>&lt;SEARCH  FOR  EVID </nobr></div>
+<div style="position: absolute; top: 4333px; left: 220px;"><nobr>&gt; </nobr></div>
+<div style="position: absolute; top: 4352px; left: 220px;"><nobr>&lt;KW&gt; </nobr></div>
+<div style="position: absolute; top: 4367px; left: 220px;"><nobr>&lt;REM&gt; </nobr></div>
+<div style="position: absolute; top: 3983px; left: 367px;"><nobr>to </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 6px; font-family: Times;">
+<div style="position: absolute; top: 3987px; left: 380px;"><nobr>= </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 10px; font-family: Times;">
+<div style="position: absolute; top: 3984px; left: 391px;"><nobr><i>113 </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 3982px; left: 408px;"><nobr><i>of referent </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4013px; left: 367px;"><nobr>to = </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 4012px; left: 391px;"><nobr><i>ID of referent </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 3877px; left: 576px;"><nobr>supplying information </nobr></div>
+<div style="position: absolute; top: 3891px; left: 576px;"><nobr>rebuttal  of  an  actor's  point  by </nobr></div>
+<div style="position: absolute; top: 3907px; left: 576px;"><nobr>another actor </nobr></div>
+<div style="position: absolute; top: 3922px; left: 576px;"><nobr>apology </nobr></div>
+<div style="position: absolute; top: 3937px; left: 576px;"><nobr>flattery </nobr></div>
+<div style="position: absolute; top: 4124px; left: 366px;"><nobr>type = { beggingTheQuestion, </nobr></div>
+<div style="position: absolute; top: 4139px; left: 366px;"><nobr>redHerring,  ignoratioElenehi, </nobr></div>
+<div style="position: absolute; top: 4154px; left: 366px;"><nobr>simplisticModel,  strawMan, </nobr></div>
+<div style="position: absolute; top: 4169px; left: 366px;"><nobr>AdMajoritatem,  adHominem, </nobr></div>
+<div style="position: absolute; top: 4185px; left: 366px;"><nobr>overGeneralization,  etc. } </nobr></div>
+<div style="position: absolute; top: 3982px; left: 575px;"><nobr>ref.  "de  dicto":  to  another, </nobr></div>
+<div style="position: absolute; top: 3997px; left: 575px;"><nobr>quotable, segment </nobr></div>
+<div style="position: absolute; top: 4012px; left: 575px;"><nobr>ref. "de re": to content  of another </nobr></div>
+<div style="position: absolute; top: 4027px; left: 576px;"><nobr>segment </nobr></div>
+<div style="position: absolute; top: 4042px; left: 575px;"><nobr>source  of  an  information  or </nobr></div>
+<div style="position: absolute; top: 4057px; left: 575px;"><nobr>argument: a book, etc. </nobr></div>
+<div style="position: absolute; top: 4092px; left: 575px;"><nobr>good  (formally,  or </nobr></div>
+<div style="position: absolute; top: 4108px; left: 575px;"><nobr>valid) argument </nobr></div>
+<div style="position: absolute; top: 4123px; left: 575px;"><nobr><b><span class="goohl1">fallacy</span></b> </nobr></div>
+<div style="position: absolute; top: 4092px; left: 708px;"><nobr>plausibly </nobr></div>
+<div style="position: absolute; top: 4198px; left: 575px;"><nobr>self-contradiction </nobr></div>
+<div style="position: absolute; top: 4213px; left: 575px;"><nobr>contradiction/opposition </nobr></div>
+<div style="position: absolute; top: 4213px; left: 734px;"><nobr>with </nobr></div>
+<div style="position: absolute; top: 4229px; left: 575px;"><nobr>another source </nobr></div>
+<div style="position: absolute; top: 4244px; left: 575px;"><nobr>commonplace,  logically  valid  or </nobr></div>
+<div style="position: absolute; top: 4260px; left: 575px;"><nobr>not </nobr></div>
+<div style="position: absolute; top: 4275px; left: 575px;"><nobr>pro </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 6px; font-family: Times;">
+<div style="position: absolute; top: 4309px; left: 574px;"><nobr>contz</nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4320px; left: 575px;"><nobr>should  search  for  evidence.  For </nobr></div>
+<div style="position: absolute; top: 4335px; left: 575px;"><nobr>the user's own use. </nobr></div>
+<div style="position: absolute; top: 4350px; left: 574px;"><nobr>key word or key expression </nobr></div>
+<div style="position: absolute; top: 4365px; left: 574px;"><nobr>reader's comment </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 18px; font-family: Times;">
+<div style="position: absolute; top: 4419px; left: 115px;"><nobr><b>4. Examples </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 4459px; left: 116px;"><nobr><i><b>4.1, Example: "Chavez rules"  The Economis  May </b></i></nobr></div>
+<div style="position: absolute; top: 4459px; left: 571px;"><nobr><i><b>1999, p 34 </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4488px; left: 103px;"><nobr>This except is the evaluation pan of the article, between the biography and a bibliography. </nobr></div>
+<div style="position: absolute; top: 4522px; left: 103px;"><nobr>Text type: political analysis. Description, evaluation, and scenario. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 18px; font-family: Times;">
+<div style="position: absolute; top: 4554px; left: 103px;"><nobr><b>Original text </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 4596px; left: 103px;"><nobr>If they ever doubted it, Venezuela's political elite now know who's boss: President Hugo Chavez. He promised during his </nobr></div>
+<div style="position: absolute; top: 4613px; left: 103px;"><nobr>election campaign to end their hold on power. He has now taken two giant steps toward doing so -  and replacing it with his </nobr></div>
+<div style="position: absolute; top: 4630px; left: 103px;"><nobr>own. First,  the president cowed Congress into granting him nearly all the powers that he had demanded to enact economic </nobr></div>
+<div style="position: absolute; top: 4647px; left: 103px;"><nobr>and financial legislation by decree. Then, on April 24th, a referendum gave him a huge majority for the creation of a new </nobr></div>
+<div style="position: absolute; top: 4664px; left: 103px;"><nobr>assembly to rewrite the constitution. </nobr></div>
+<div style="position: absolute; top: 4697px; left: 103px;"><nobr>The former paratroop colonel, dismissesd in the early days of his challenge for power as a political neophyte, has now put </nobr></div>
+<div style="position: absolute; top: 4714px; left: 102px;"><nobr>the sophisticates rudely in their place. He has also shown up the weakness of the two big traditional parties.  Crushed in the </nobr></div>
+<div style="position: absolute; top: 4730px; left: 102px;"><nobr>presidential election, they are still groping for a strategy to counter Mr Chavez and his alleged dictatorial tendencies,  and </nobr></div>
+<div style="position: absolute; top: 4748px; left: 102px;"><nobr>who no sign so far of finding one. </nobr></div>
+<div style="position: absolute; top: 4780px; left: 103px;"><nobr>Still  more so [i.e. a victory], in its likely effects, was the backing Mr Chavez won for the creation of a new constituent </nobr></div>
+<div style="position: absolute; top: 4797px; left: 102px;"><nobr>assembly. The turnout, admittedly, was only 39%. But, of those who did bother to vote, over 90% backed his proposal. The </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 4859px; left: 447px;"><nobr><b>21 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 4927px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="5"><b>Page 5</b></a></font></td></tr></tbody></table></div><font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 5033px; left: 105px;"><nobr>country's 1961 constitution, he claims, has only perpetuated the rule of the elite in a sham democracy. The new assembly is </nobr></div>
+<div style="position: absolute; top: 5050px; left: 105px;"><nobr>to be elected -  on non-party lines -  in late June, and is meant to have a constitution ready by early January for approval by </nobr></div>
+<div style="position: absolute; top: 5067px; left: 105px;"><nobr>referendum later that month. </nobr></div>
+<div style="position: absolute; top: 5100px; left: 106px;"><nobr>The assembly will no doubt shake up the structures of government- not least, probably, in allowing a president the two </nobr></div>
+<div style="position: absolute; top: 5117px; left: 105px;"><nobr>consecutive terms that Mr Chavez seeks. Whether he can earn and win re-election it is far too early to say. But, for now, bar </nobr></div>
+<div style="position: absolute; top: 5134px; left: 106px;"><nobr>some seriously bad luck or bad bungling, he is firmly in the saddle, and strongly popular. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 15px; font-family: Times;">
+<div style="position: absolute; top: 5186px; left: 105px;"><nobr><b>Annotated text </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 5226px; left: 105px;"><nobr>&lt;SITUATION&gt;If they ever doubted it, Venezuela's political elite now know who's boss: President &lt;ACTOR </nobr></div>
+<div style="position: absolute; top: 5244px; left: 105px;"><nobr>NAME=Chavez ID= l&gt;Hugo Chavez.  &lt;/ACTOR&gt; </nobr></div>
+<div style="position: absolute; top: 5260px; left: 105px;"><nobr>He promised during his election campaign to end their hold on power. </nobr></div>
+<div style="position: absolute; top: 5277px; left: 105px;"><nobr>He has now taken two giant steps toward doing so - </nobr></div>
+<div style="position: absolute; top: 5294px; left: 106px;"><nobr>and replacing it with his own. </nobr></div>
+<div style="position: absolute; top: 5311px; left: 106px;"><nobr>&lt;DETAILS&gt;First, the president cowed Congress into granting him nearly all the powers that he had demanded to enact </nobr></div>
+<div style="position: absolute; top: 5327px; left: 106px;"><nobr>economic and financial legislation by decree. &lt;LATER_EVENT&gt; Then, on April 24th, a &lt;KW&gt;referendum&lt;/KW&gt; gave </nobr></div>
+<div style="position: absolute; top: 5345px; left: 106px;"><nobr>him a huge majority </nobr></div>
+<div style="position: absolute; top: 5361px; left: 106px;"><nobr>for the creation of a new assembly to rewrite the constitution. </nobr></div>
+<div style="position: absolute; top: 5378px; left: 107px;"><nobr>&lt;/DETAILS&gt; </nobr></div>
+<div style="position: absolute; top: 5395px; left: 107px;"><nobr>&lt;/SITUATION&gt; </nobr></div>
+<div style="position: absolute; top: 5428px; left: 106px;"><nobr>&lt;ACTOR REF=Chavez TITLE=former__paratroop_colonel&gt;The former paratroop colonel, &lt;/ACTOR&gt; </nobr></div>
+<div style="position: absolute; top: 5445px; left: 107px;"><nobr>&lt;CONTRAST BY=unspecified DOMAIN=opinion  on  abilities&gt;dismissesd in the early days of his challenge for power as </nobr></div>
+<div style="position: absolute; top: 5463px; left: 107px;"><nobr>a political neophyte, &lt;/CONTRAST&gt; </nobr></div>
+<div style="position: absolute; top: 5480px; left: 107px;"><nobr>has now put the sophisticates rudely in their place. </nobr></div>
+<div style="position: absolute; top: 5496px; left: 107px;"><nobr>He has also shown up the weakness of the &lt;ACTOR ID 1&gt; two big traditional parties. </nobr></div>
+<div style="position: absolute; top: 5513px; left: 107px;"><nobr>&lt;CAUSE&gt; Crushed in the presidential election, &lt;/CAUSE&gt; </nobr></div>
+<div style="position: absolute; top: 5529px; left: 107px;"><nobr>&lt;REF = "the two big traditional parties"&gt; they are still groping for a strategy to counter Mr Chavez and his alleged </nobr></div>
+<div style="position: absolute; top: 5547px; left: 107px;"><nobr>dictatorial tendencies, </nobr></div>
+<div style="position: absolute; top: 5564px; left: 108px;"><nobr>and who show no sign so far of finding one. </nobr></div>
+<div style="position: absolute; top: 5613px; left: 107px;"><nobr>&lt;INTERP&gt; Still more so [i.e. a victory], in its likely effects, was the backing Mr Chavez won for the creation of a new </nobr></div>
+<div style="position: absolute; top: 5630px; left: 108px;"><nobr>constituent assembly. </nobr></div>
+<div style="position: absolute; top: 5646px; left: 108px;"><nobr>&lt;EVID&gt; &lt;CONCESSION&gt; The turnout, admittedly, was only 39%. &lt;/CONCESSION&gt; </nobr></div>
+<div style="position: absolute; top: 5663px; left: 108px;"><nobr>&lt;But, of those who did bother to vote, over 90% backed his proposal.&lt;/EVID&gt; </nobr></div>
+<div style="position: absolute; top: 5680px; left: 108px;"><nobr>&lt;DECLA BY=Chavez&gt;The country's 1961 constitution, he claims, has only perpetuated the rule oft he elite in a sham </nobr></div>
+<div style="position: absolute; top: 5697px; left: 108px;"><nobr>democracy. &lt;/DECLA&gt; </nobr></div>
+<div style="position: absolute; top: 5714px; left: 108px;"><nobr>&lt;SCENARIO&gt; The new assembly is to be elected -  on non-party lines -  in late June, </nobr></div>
+<div style="position: absolute; top: 5731px; left: 108px;"><nobr>and is meant to have a constitution ready by early January </nobr></div>
+<div style="position: absolute; top: 5748px; left: 108px;"><nobr>for approval by referendum later that month. </nobr></div>
+<div style="position: absolute; top: 5763px; left: 108px;"><nobr>&lt;/SCENARIO&gt; </nobr></div>
+<div style="position: absolute; top: 5797px; left: 104px;"><nobr>&lt;  SCENARIO &gt; </nobr></div>
+<div style="position: absolute; top: 5814px; left: 108px;"><nobr>The assembly will no doubt shake up the structures of government- </nobr></div>
+<div style="position: absolute; top: 5830px; left: 108px;"><nobr>not least, probably, in allowing a president the two consecutive terms that Mr Chavez seeks. </nobr></div>
+<div style="position: absolute; top: 5848px; left: 108px;"><nobr>Whether he can earn and win re-election it is far too early to say. </nobr></div>
+<div style="position: absolute; top: 5864px; left: 108px;"><nobr>&lt;/SCENARIO&gt; </nobr></div>
+<div style="position: absolute; top: 5880px; left: 108px;"><nobr>&lt;SITUATION&gt;Bug for now, &lt;CONDITION MOD =unlikely&gt;bar some seriously bad luck or bad bungling </nobr></div>
+<div style="position: absolute; top: 5898px; left: 109px;"><nobr>&lt;/CONDITION&gt;, he is firmly in the saddle, </nobr></div>
+<div style="position: absolute; top: 5914px; left: 108px;"><nobr>and strongly popular.  &lt;/SITUATION&gt; </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 6040px; left: 455px;"><nobr><b>22 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 6115px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="6"><b>Page 6</b></a></font></td></tr></tbody></table></div><font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 6216px; left: 114px;"><nobr><i><b>4.2. Example 2: Encyclopaedia Britannica on Herbert Marcuse </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 6244px; left: 100px;"><nobr>Text type: encyclopedic (with ironic distance) </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 17px; font-family: Times;">
+<div style="position: absolute; top: 6277px; left: 100px;"><nobr><b>Original text </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 6304px; left: 153px;"><nobr>A  Hegelian-Freudian-Marxist,  Marcuse  was  wedded  to  the  ideas  of  radicalization,  vociferous  dissent,  and </nobr></div>
+<div style="position: absolute; top: 6320px; left: 153px;"><nobr>"resistance to  the  point  of subversion."  He  believed  that  Western  society was  unfree  and  repressive,  that  its </nobr></div>
+<div style="position: absolute; top: 6337px; left: 153px;"><nobr>technology had bought the complacency of the masses with material goods, and that it had kept them intellectually </nobr></div>
+<div style="position: absolute; top: 6354px; left: 153px;"><nobr>and spiritually  captive. However, although a frank exponent of resistance to the established order, Marcuse did not </nobr></div>
+<div style="position: absolute; top: 6371px; left: 153px;"><nobr>applaud  the campus demonstrations.  "I still  consider the American University an  oasis of free speech and  real </nobr></div>
+<div style="position: absolute; top: 6388px; left: 153px;"><nobr>critical  thinking in the society," he said.  "Any student movement should try to protect this citadel...  [but]  try to </nobr></div>
+<div style="position: absolute; top: 6405px; left: 153px;"><nobr>radicalize the departments inside the university." </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 17px; font-family: Times;">
+<div style="position: absolute; top: 6437px; left: 100px;"><nobr><b>Annotated text </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 6463px; left: 153px;"><nobr>A &lt;POL tone=irony&gt; Hegelian-Freudian-Marxist&lt;/POL&gt;, &lt;ACTOR NAME=Marcuse&gt;Marcuse was &lt;/ACTOR&gt; </nobr></div>
+<div style="position: absolute; top: 6480px; left: 153px;"><nobr>&lt;POL
+tone=irony&gt;wedded to the ideas &lt;/POL&gt; of radicalization,
+&lt;POL TONE =irony&gt;vociferous&lt;/POL&gt; dissent, </nobr></div>
+<div style="position: absolute; top: 6497px; left: 153px;"><nobr>and &lt;QUO type=Excerpt&gt; author=Marcuse&gt; "resistance to the point of subversion."&lt;/QUO&gt; </nobr></div>
+<div style="position: absolute; top: 6514px; left: 153px;"><nobr>He &lt;POL TONE =irony&gt;believed&lt;/POL&gt; that Western society was unfree and repressive, that its technology had </nobr></div>
+<div style="position: absolute; top: 6531px; left: 153px;"><nobr>bought the &lt;POL TONE=irony&gt;complacency&lt;/POL&gt; of the masses with material goods, and that it had kept them </nobr></div>
+<div style="position: absolute; top: 6548px; left: 153px;"><nobr>intellectually and spiritually captive. </nobr></div>
+<div style="position: absolute; top: 6565px; left: 153px;"><nobr>&lt;CONTRAST&gt;However, </nobr></div>
+<div style="position: absolute; top: 6581px; left: 163px;"><nobr>&lt;CONCESSION&gt;  although a frank exponent of resistance to the established order </nobr></div>
+<div style="position: absolute; top: 6598px; left: 164px;"><nobr>&lt;/CONCESSION&gt;, </nobr></div>
+<div style="position: absolute; top: 6615px; left: 153px;"><nobr>Marcuse did not applaud the campus demonstrations. </nobr></div>
+<div style="position: absolute; top: 6632px; left: 156px;"><nobr>&lt;EVIDENCE&gt; </nobr></div>
+<div style="position: absolute; top: 6649px; left: 153px;"><nobr>&lt;QUOTE BY=Marcuse&gt;"I still consider the American University an oasis of free speech and real critical thinking </nobr></div>
+<div style="position: absolute; top: 6666px; left: 153px;"><nobr>in the society," he said. </nobr></div>
+<div style="position: absolute; top: 6683px; left: 153px;"><nobr>&lt;RECOM&gt;"Any student movement should try to protect this citadel [but] try to radicalize the departments inside </nobr></div>
+<div style="position: absolute; top: 6700px; left: 153px;"><nobr>the university ." </nobr></div>
+<div style="position: absolute; top: 6716px; left: 153px;"><nobr>&lt;/RECOM&gt; </nobr></div>
+<div style="position: absolute; top: 6733px; left: 156px;"><nobr>&lt;/QUOTE&gt; </nobr></div>
+<div style="position: absolute; top: 6750px; left: 153px;"><nobr>&lt;/EVIDENCE&gt; </nobr></div>
+<div style="position: absolute; top: 6766px; left: 153px;"><nobr>&lt;/CONTRAST&gt; </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 17px; font-family: Times;">
+<div style="position: absolute; top: 6801px; left: 115px;"><nobr><b>5.  Processing </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 15px; font-family: Times;">
+<div style="position: absolute; top: 6841px; left: 116px;"><nobr><i><b>5.1. Method </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 6869px; left: 101px;"><nobr>The  annotator  is  to  be  associated  to  a </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 6870px; left: 370px;"><nobr><i>summarizer </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 6886px; left: 102px;"><nobr>(Delannoy  et  al.  1998). The  summarizer  is  a  non- </nobr></div>
+<div style="position: absolute; top: 6903px; left: 102px;"><nobr>knowledge-based  selector  of  passages  which  combines </nobr></div>
+<div style="position: absolute; top: 6920px; left: 102px;"><nobr>indices  of  different  aspects:  keywords  assigned </nobr></div>
+<div style="position: absolute; top: 6937px; left: 102px;"><nobr>dynamically,  position,  word  distribution,  coherence  via </nobr></div>
+<div style="position: absolute; top: 6953px; left: 102px;"><nobr>lexical chains (using WordNet or Roget: Barker et al. 98a) </nobr></div>
+<div style="position: absolute; top: 6970px; left: 101px;"><nobr>and  markers,  and  thesaurus  relations.  The  initial </nobr></div>
+<div style="position: absolute; top: 6986px; left: 102px;"><nobr>granularity is that of sentences,  although we are trying to </nobr></div>
+<div style="position: absolute; top: 7003px; left: 101px;"><nobr>refine it with  a grammar.  In the  compilation of the final </nobr></div>
+<div style="position: absolute; top: 7020px; left: 101px;"><nobr>summary, sentences are selected one by one, with a bias to </nobr></div>
+<div style="position: absolute; top: 7036px; left: 102px;"><nobr>sentences containing keywords underrepresented so far. As </nobr></div>
+<div style="position: absolute; top: 7053px; left: 101px;"><nobr>a partly implemented feature,  the input is classified in one </nobr></div>
+<div style="position: absolute; top: 7070px; left: 101px;"><nobr>of  various  text  types  (neutral,  news  story,  political </nobr></div>
+<div style="position: absolute; top: 7087px; left: 101px;"><nobr>analysis,  narrative, etc.), and the user selects one of several </nobr></div>
+<div style="position: absolute; top: 7104px; left: 101px;"><nobr>output  types  (events,  changes,  utterances  without </nobr></div>
+<div style="position: absolute; top: 7120px; left: 101px;"><nobr>treatment, or details of argumentation) </nobr></div>
+<div style="position: absolute; top: 7153px; left: 101px;"><nobr>The  processing  for argumentation  mark-up  (in  progress) </nobr></div>
+<div style="position: absolute; top: 6800px; left: 472px;"><nobr>uses a chart parser for segmenting, rather than the shallow </nobr></div>
+<div style="position: absolute; top: 6817px; left: 471px;"><nobr>segmenting in Marcu 97.  It targets more than "clause-like" </nobr></div>
+<div style="position: absolute; top: 6833px; left: 471px;"><nobr>units: non-clause circumstantials (adverbials or adjectivals) </nobr></div>
+<div style="position: absolute; top: 6850px; left: 471px;"><nobr>are  recognized and  kept  separate.  This  is  to  allows  for </nobr></div>
+<div style="position: absolute; top: 6866px; left: 471px;"><nobr>summarization by elimination of minor constituents ("text </nobr></div>
+<div style="position: absolute; top: 6883px; left: 471px;"><nobr>reduction": Greffenstette 98), and also for the treatment of </nobr></div>
+<div style="position: absolute; top: 6900px; left: 471px;"><nobr>eircumstantials in narrow/broad scope as required (  as  in: </nobr></div>
+<div style="position: absolute; top: 6917px; left: 471px;"><nobr>"villagers, who holds guns, will be considered outlaws" vs. </nobr></div>
+<div style="position: absolute; top: 6934px; left: 471px;"><nobr>"villagers who hold guns will be considered outlaws"). </nobr></div>
+<div style="position: absolute; top: 6967px; left: 470px;"><nobr>Non-binary  branching  (3  and  more)  is  allowed,  as  are </nobr></div>
+<div style="position: absolute; top: 6984px; left: 471px;"><nobr>cross-level  relations,  e.g.  between  a  clause  and  a  whole </nobr></div>
+<div style="position: absolute; top: 7000px; left: 470px;"><nobr>paragraph, in particular for cases of propositional reference </nobr></div>
+<div style="position: absolute; top: 7017px; left: 470px;"><nobr>("Those  points  will  be  discussed  etc."),  or  meta-textual </nobr></div>
+<div style="position: absolute; top: 7034px; left: 470px;"><nobr>reference ("the concept outlined in the previous paragraph </nobr></div>
+<div style="position: absolute; top: 7051px; left: 470px;"><nobr>is now applied to etc."), that is, </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 7051px; left: 662px;"><nobr><i>de dicto as </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7051px; left: 732px;"><nobr>opposed to </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 7051px; left: 802px;"><nobr><i>de </i></nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 7px; font-family: Times;">
+<div style="position: absolute; top: 7071px; left: 469px;"><nobr><i>re. </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7101px; left: 469px;"><nobr>The set of cues is inspired by the extensive list  in Marcu </nobr></div>
+<div style="position: absolute; top: 7118px; left: 469px;"><nobr>97.  There are rules of </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 11px; font-family: Times;">
+<div style="position: absolute; top: 7118px; left: 607px;"><nobr><i>scoping </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7118px; left: 658px;"><nobr>for the cues  into relations </nobr></div>
+<div style="position: absolute; top: 7135px; left: 469px;"><nobr>and their scope over text segments. The construction of the </nobr></div>
+<div style="position: absolute; top: 7151px; left: 469px;"><nobr>tree of rhetorical relations is done by applying rules. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 7224px; left: 444px;"><nobr><b>23 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 7303px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="7"><b>Page 7</b></a></font></td></tr></tbody></table></div><font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7413px; left: 103px;"><nobr>The user can intervene in the process to rectify a decision </nobr></div>
+<div style="position: absolute; top: 7430px; left: 103px;"><nobr>of the system, or to insert free-style comments or links. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 17px; font-family: Times;">
+<div style="position: absolute; top: 7453px; left: 117px;"><nobr><i><b>5.2. Output </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7484px; left: 102px;"><nobr>The output can be: </nobr></div>
+<div style="position: absolute; top: 7503px; left: 102px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 7503px; left: 129px;"><nobr>the  input  text,  enriched  with  marked  up  of </nobr></div>
+<div style="position: absolute; top: 7520px; left: 129px;"><nobr>argumentative  structure  in  the  discourse  XML  (if </nobr></div>
+<div style="position: absolute; top: 7537px; left: 128px;"><nobr>desired, highlighted via a browser) </nobr></div>
+<div style="position: absolute; top: 7555px; left: 102px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 7555px; left: 128px;"><nobr>a  graph  of the  argumentation components (e.g.  for a </nobr></div>
+<div style="position: absolute; top: 7571px; left: 128px;"><nobr>critical thinking class) </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 7595px; left: 102px;"><nobr><b>• </b></nobr></div>
+<div style="position: absolute; top: 7595px; left: 128px;"><nobr><b>a </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7590px; left: 140px;"><nobr>point-form summary of claims  made by the author </nobr></div>
+<div style="position: absolute; top: 7607px; left: 128px;"><nobr>and, if applicable, of the actors reported on </nobr></div>
+<div style="position: absolute; top: 7625px; left: 101px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 7625px; left: 128px;"><nobr>a highlight of fallacies:  bad arguments (with  flaws of </nobr></div>
+<div style="position: absolute; top: 7641px; left: 127px;"><nobr>evidence, relevance, cohesion, etc.) </nobr></div>
+<div style="position: absolute; top: 7660px; left: 101px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 7660px; left: 127px;"><nobr>answers to standard questions in general or on the type </nobr></div>
+<div style="position: absolute; top: 7676px; left: 127px;"><nobr>of  text,  as:  timeline,  list  of  persons  and  charges </nobr></div>
+<div style="position: absolute; top: 7693px; left: 127px;"><nobr>mentioned, declarations, predictions, etc. </nobr></div>
+<div style="position: absolute; top: 7711px; left: 101px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 7711px; left: 128px;"><nobr>a  chart  of  the  positions  of  various  actors  pro  and </nobr></div>
+<div style="position: absolute; top: 7728px; left: 127px;"><nobr>contra  the  main  points  at  issue  -  and  of  their </nobr></div>
+<div style="position: absolute; top: 7745px; left: 128px;"><nobr>oppositions (e.g. on an article of political analys!s). </nobr></div>
+<div style="position: absolute; top: 7778px; left: 101px;"><nobr>At the time of writing, this is not operational. As intended, </nobr></div>
+<div style="position: absolute; top: 7795px; left: 101px;"><nobr>the  selection  of  the  output  type  is  done  by  an  HTML </nobr></div>
+<div style="position: absolute; top: 7812px; left: 102px;"><nobr>interface  lauching  a  CGI  which  parses  the  XML  and </nobr></div>
+<div style="position: absolute; top: 7829px; left: 101px;"><nobr>translates  it to HTML, selectively to  reflect the choice of </nobr></div>
+<div style="position: absolute; top: 7845px; left: 101px;"><nobr>viewing made by the user. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 18px; font-family: Times;">
+<div style="position: absolute; top: 7880px; left: 101px;"><nobr><b>6. Discussion </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 16px; font-family: Times;">
+<div style="position: absolute; top: 7930px; left: 101px;"><nobr><b>6.1. Suitability and scope </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7955px; left: 100px;"><nobr>- </nobr></div>
+<div style="position: absolute; top: 7955px; left: 127px;"><nobr>In  our  manual  experiments,  XML-style  annotation </nobr></div>
+<div style="position: absolute; top: 7971px; left: 127px;"><nobr>appears to  cover all argument structures,  in  terms of </nobr></div>
+<div style="position: absolute; top: 7988px; left: 127px;"><nobr>adequacy  and  non-ambiguity.  Still,  the  criteria  of </nobr></div>
+<div style="position: absolute; top: 8005px; left: 127px;"><nobr>multiple-user satisfaction,  and  of the  fulfilment  of a </nobr></div>
+<div style="position: absolute; top: 8021px; left: 127px;"><nobr>further task, should be examined in the future. </nobr></div>
+<div style="position: absolute; top: 8038px; left: 100px;"><nobr>- </nobr></div>
+<div style="position: absolute; top: 8038px; left: 127px;"><nobr>the  XML  representation  framework  is  versatile  in </nobr></div>
+<div style="position: absolute; top: 8055px; left: 127px;"><nobr>matters of extensibility, scoping, and embedding; still, </nobr></div>
+<div style="position: absolute; top: 8072px; left: 127px;"><nobr>one will have to test it for possible overlap problems </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 8094px; left: 100px;"><nobr><b>- </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 8089px; left: 127px;"><nobr>the  annotation  scheme is  inherently  multilingual;  the </nobr></div>
+<div style="position: absolute; top: 8106px; left: 127px;"><nobr>annotation  process  requires  language-specific  lexical </nobr></div>
+<div style="position: absolute; top: 8122px; left: 127px;"><nobr>and syntactic resources </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 8145px; left: 100px;"><nobr><b>- </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 8139px; left: 126px;"><nobr>the mark-up addresses  argumentative texts: those </nobr></div>
+<div style="position: absolute; top: 8156px; left: 126px;"><nobr>reporting collaborative or contradictory discussants </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 8178px; left: 121px;"><nobr><b>-(in </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 8173px; left: 147px;"><nobr>direct speech,  indirect  speech, or synthetic </nobr></div>
+<div style="position: absolute; top: 8189px; left: 126px;"><nobr>rephrasing), those where the author gives claims and </nobr></div>
+<div style="position: absolute; top: 8206px; left: 126px;"><nobr>rationales, and those texts meeting both criteria. More </nobr></div>
+<div style="position: absolute; top: 8223px; left: 126px;"><nobr>finely, it may be useful to characterize different </nobr></div>
+<div style="position: absolute; top: 8239px; left: 126px;"><nobr>subtypes of texts: a reader does not look for the same </nobr></div>
+<div style="position: absolute; top: 8256px; left: 126px;"><nobr>information in different types of texts; and not with </nobr></div>
+<div style="position: absolute; top: 8273px; left: 126px;"><nobr>the same cues. This has not been considered as yet. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 17px; font-family: Times;">
+<div style="position: absolute; top: 8297px; left: 114px;"><nobr><i><b>6.2. Assumptions,  risks, </b></i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 14px; font-family: Times;">
+<div style="position: absolute; top: 8299px; left: 312px;"><nobr><i>limitations </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 8327px; left: 99px;"><nobr>There is a risk of running  into problems of overlap: </nobr></div>
+<div style="position: absolute; top: 8342px; left: 99px;"><nobr>To address this, we have to : </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 7403px; left: 481px;"><nobr><b>- </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7398px; left: 490px;"><nobr>use the tag classification </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 7420px; left: 481px;"><nobr><b>- </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7415px; left: 490px;"><nobr>handle specific priorities where applicable </nobr></div>
+</span></font>
+<font face="Times" size="2"><span style="font-size: 4px; font-family: Times;">
+<div style="position: absolute; top: 7437px; left: 481px;"><nobr><b>- </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7432px; left: 492px;"><nobr>for  the  rest,  use  one  the  existing  means  for  handling </nobr></div>
+<div style="position: absolute; top: 7449px; left: 477px;"><nobr>overlap,  e.g.  as  proposed  for  the  Bergen  Wittgenstein </nobr></div>
+<div style="position: absolute; top: 7466px; left: 477px;"><nobr>Archive  (Sperberg-McQueen  &amp;  Huitfeldt  98),  or  by  the </nobr></div>
+<div style="position: absolute; top: 7483px; left: 477px;"><nobr>scoping methods of GDA. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 18px; font-family: Times;">
+<div style="position: absolute; top: 7518px; left: 477px;"><nobr><b>7. Background  and Advancement </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7550px; left: 476px;"><nobr>We had  the  idea of HTML-style mark-up of discourse  in </nobr></div>
+<div style="position: absolute; top: 7567px; left: 476px;"><nobr>early  1998,  before  we  were  even  acquainted  with  XML. </nobr></div>
+<div style="position: absolute; top: 7583px; left: 476px;"><nobr>The  original  purpose was  mostly one  of highlighting,  for </nobr></div>
+<div style="position: absolute; top: 7600px; left: 476px;"><nobr>applying critical-thinking analyses in a standardizable way. </nobr></div>
+<div style="position: absolute; top: 7634px; left: 476px;"><nobr>Experiments have been done manually by the author on 42 </nobr></div>
+<div style="position: absolute; top: 7651px; left: 476px;"><nobr>texts,  10 to 600 words long, consisting of news articles (Le </nobr></div>
+<div style="position: absolute; top: 7668px; left: 475px;"><nobr>Monde,  CNN Online),  encyclopedia entries (E.  Britannica </nobr></div>
+<div style="position: absolute; top: 7685px; left: 475px;"><nobr>online)  and  on  texts  containing  more  in-depth  analyses </nobr></div>
+<div style="position: absolute; top: 7702px; left: 475px;"><nobr>(The  Economist;  editorials  in  Le  Monde;  articles  of  Le </nobr></div>
+<div style="position: absolute; top: 7719px; left: 475px;"><nobr>Monde  Diplomatique  and  the  New  York  Review  Of </nobr></div>
+<div style="position: absolute; top: 7735px; left: 475px;"><nobr>Books). </nobr></div>
+<div style="position: absolute; top: 7769px; left: 475px;"><nobr>The analyzer is being prototyped in Perl to be associated to </nobr></div>
+<div style="position: absolute; top: 7786px; left: 474px;"><nobr>the  aummarizer  in  (Delannoy  et  al.  98).  It  includes  an </nobr></div>
+<div style="position: absolute; top: 7802px; left: 474px;"><nobr>operational parser of XML,  and  a chart-parser of English, </nobr></div>
+<div style="position: absolute; top: 7819px; left: 475px;"><nobr>in progress. </nobr></div>
+<div style="position: absolute; top: 7853px; left: 474px;"><nobr>The  system  of tags  can  probably  be  improved  by  more </nobr></div>
+<div style="position: absolute; top: 7870px; left: 474px;"><nobr>manual  mark-up  and  evaluation.  The  DTD  is  not  yet </nobr></div>
+<div style="position: absolute; top: 7886px; left: 474px;"><nobr>mature;  it  should  be  refined  and  validated  on  a  large </nobr></div>
+<div style="position: absolute; top: 7903px; left: 473px;"><nobr>number of texts, and preferably in a collaborative way.. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 18px; font-family: Times;">
+<div style="position: absolute; top: 7938px; left: 487px;"><nobr><b>8. Conclusion </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 12px; font-family: Times;">
+<div style="position: absolute; top: 7969px; left: 473px;"><nobr>This proposal  is,  to  our knowledge,  the  first to  explicitly </nobr></div>
+<div style="position: absolute; top: 7986px; left: 473px;"><nobr>apply XML mark-up to <i>argumentation  </i>mark-up. It claims </nobr></div>
+<div style="position: absolute; top: 8003px; left: 473px;"><nobr>that  the  mark-up  can  be  useful  both  for  human  critiquer </nobr></div>
+<div style="position: absolute; top: 8020px; left: 472px;"><nobr>and  for  further  processing,  thus  being  a  multi-purpose, </nobr></div>
+<div style="position: absolute; top: 8036px; left: 473px;"><nobr>intermediate-level representation. </nobr></div>
+<div style="position: absolute; top: 8070px; left: 472px;"><nobr>Future work includes: </nobr></div>
+<div style="position: absolute; top: 8088px; left: 498px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 8088px; left: 524px;"><nobr>tracking possible <i>conflicts  of scope  </i>between  tags </nobr></div>
+<div style="position: absolute; top: 8104px; left: 524px;"><nobr>(overlap, vs. simple embedding) </nobr></div>
+<div style="position: absolute; top: 8122px; left: 498px;"><nobr><i>• </i></nobr></div>
+<div style="position: absolute; top: 8122px; left: 524px;"><nobr><i>a  systematic  evaluation  of  the  tag  set,  </i>its </nobr></div>
+<div style="position: absolute; top: 8139px; left: 524px;"><nobr>adjustment, and the definition of a <i>DTD </i></nobr></div>
+<div style="position: absolute; top: 8157px; left: 498px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 8157px; left: 523px;"><nobr>completing the implementation </nobr></div>
+<div style="position: absolute; top: 8175px; left: 497px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 8175px; left: 523px;"><nobr>application  of machine learning (cf. the AAAI-97 </nobr></div>
+<div style="position: absolute; top: 8192px; left: 523px;"><nobr>Spring Symposium on ML for Discourse analysis; </nobr></div>
+<div style="position: absolute; top: 8208px; left: 522px;"><nobr>Hirschman et al. 98; Barker &amp; Szpakowicz 98). </nobr></div>
+<div style="position: absolute; top: 8226px; left: 496px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 8226px; left: 523px;"><nobr>implementing  an  <i>acquisition  tool  </i>with  which  a </nobr></div>
+<div style="position: absolute; top: 8242px; left: 522px;"><nobr>user  could  simply  highlight  a  passage  and  click </nobr></div>
+<div style="position: absolute; top: 8259px; left: 522px;"><nobr>the appropriate tag's button. </nobr></div>
+<div style="position: absolute; top: 8277px; left: 496px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 8277px; left: 522px;"><nobr>exploration  of <i>information  extraction  </i>based  on  a </nobr></div>
+<div style="position: absolute; top: 8294px; left: 522px;"><nobr>combination  of  HTML  tags,  (for structure)  and </nobr></div>
+<div style="position: absolute; top: 8311px; left: 522px;"><nobr>discourse  XML;  comparison  with  the  automatic </nobr></div>
+<div style="position: absolute; top: 8327px; left: 521px;"><nobr>mark-up of online catalogs </nobr></div>
+<div style="position: absolute; top: 8345px; left: 495px;"><nobr>• </nobr></div>
+<div style="position: absolute; top: 8345px; left: 521px;"><nobr>test with the students class on <i>critical thinking </i></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 8408px; left: 445px;"><nobr><b>24 </b></nobr></div>
+</span></font>
+
+<div style="position: absolute; top: 8491px; left: 0pt;"><hr><table border="0" width="100%"><tbody><tr><td align="right" bgcolor="#eeeeee"><font face="arial,sans-serif"><a name="8"><b>Page 8</b></a></font></td></tr></tbody></table></div><font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 8597px; left: 129px;"><nobr>•  testing onpolylogal discourse </nobr></div>
+<div style="position: absolute; top: 8615px; left: 129px;"><nobr>•  designing  a <i>critiquing </i><b><span class="goohl3">software</span></b>, and  especially  a </nobr></div>
+<div style="position: absolute; top: 8631px; left: 154px;"><nobr><b><span class="goohl2">recognizer</span></b> of fallacies </nobr></div>
+<div style="position: absolute; top: 8649px; left: 129px;"><nobr>•  gather more data on speed <i>reading </i>or plain  text, </nobr></div>
+<div style="position: absolute; top: 8666px; left: 154px;"><nobr>and on reading/speed reading of annotated text </nobr></div>
+<div style="position: absolute; top: 8684px; left: 129px;"><nobr>•  last  but  not  least,  engaging  in  a  <i>collaborative </i></nobr></div>
+<div style="position: absolute; top: 8700px; left: 154px;"><nobr><i>effort towards a common DTD </i>for argumentation </nobr></div>
+<div style="position: absolute; top: 8717px; left: 154px;"><nobr>mark-up, which  is an  important part of discourse </nobr></div>
+<div style="position: absolute; top: 8732px; left: 154px;"><nobr>mark-up. </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 19px; font-family: Times;">
+<div style="position: absolute; top: 8767px; left: 116px;"><nobr><b>9. References </b></nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 13px; font-family: Times;">
+<div style="position: absolute; top: 8800px; left: 102px;"><nobr>Barker,  Ken  &amp;  Szpakowicz,  Stan,  "Semi-Automatic </nobr></div>
+<div style="position: absolute; top: 8817px; left: 115px;"><nobr>Recognition  of  Noun  Modifier  Relationships", </nobr></div>
+<div style="position: absolute; top: 8834px; left: 114px;"><nobr><i>Proceedings of COLING-ACL '98. </i>Montr6al, 96-102. </nobr></div>
+<div style="position: absolute; top: 8850px; left: 102px;"><nobr>Barker,  Ken,  Yllias  Chali,  Terry  Copeck,  Stan  Matwin, </nobr></div>
+<div style="position: absolute; top: 8868px; left: 115px;"><nobr>Stan  Szpakowicz:  "The  Design  of a  Confignrahle  Text </nobr></div>
+<div style="position: absolute; top: 8884px; left: 115px;"><nobr>Summarization  System",  Technical  Report  TR-98-04, </nobr></div>
+<div style="position: absolute; top: 8901px; left: 115px;"><nobr>SITE, U. Ottawa,  1998 [Barker et al. 98a] </nobr></div>
+<div style="position: absolute; top: 8918px; left: 102px;"><nobr>Barker, Ken, Sylvain Delisle and Start Szpakowicz (1998) </nobr></div>
+<div style="position: absolute; top: 8935px; left: 115px;"><nobr>"Test-driving  TANKA:  Evaluating  a  semi-automatic </nobr></div>
+<div style="position: absolute; top: 8952px; left: 114px;"><nobr>system  of  text  analysis  for  knowledge  acquisition". </nobr></div>
+<div style="position: absolute; top: 8969px; left: 114px;"><nobr><i>Proc.  AI'98,  Twelfth Canadian  Con./" on  Artificial </i></nobr></div>
+<div style="position: absolute; top: 8985px; left: 113px;"><nobr><i>Intelligence. Vancouver, </i>May 1998 [Barker et al. 98b] </nobr></div>
+<div style="position: absolute; top: 9002px; left: 101px;"><nobr>Carver, Ronald P. <i>Reading Rate. </i>U. Kansas Press,  1990 </nobr></div>
+<div style="position: absolute; top: 9019px; left: 101px;"><nobr>Cremmins  Edward  T.  <i>The Art of Abstracting.  </i>ISI  Press, </nobr></div>
+<div style="position: absolute; top: 9034px; left: 116px;"><nobr>1982 </nobr></div>
+<div style="position: absolute; top: 9052px; left: 101px;"><nobr>Delannoy et al. "Flexible Summarization",  working paper, </nobr></div>
+<div style="position: absolute; top: 9069px; left: 113px;"><nobr>Worskhop on Intelligent  Text Summarization,  AAA  98 </nobr></div>
+<div style="position: absolute; top: 9085px; left: 114px;"><nobr>Spring Symposium, 1998 </nobr></div>
+<div style="position: absolute; top: 9103px; left: 100px;"><nobr>Delannoy (1999): Description du eolloque "L'importance </nobr></div>
+<div style="position: absolute; top: 9119px; left: 114px;"><nobr>des outils de recherche et de traitement de rinformation </nobr></div>
+<div style="position: absolute; top: 9135px; left: 113px;"><nobr>textuelle",  67e congr6s ACFAS, </nobr></div>
+<div style="position: absolute; top: 9151px; left: 113px;"><nobr>http://www.csi.uottawa.ca/ </nobr></div>
+<div style="position: absolute; top: 9169px; left: 113px;"><nobr>"delannoy/ACFAS/description.html </nobr></div>
+<div style="position: absolute; top: 9186px; left: 100px;"><nobr>Generalized  Document  Markup  (GDA):  presentation  at </nobr></div>
+<div style="position: absolute; top: 9202px; left: 113px;"><nobr>http://www.etl.go.jp/etl/nl/GDA, </nobr></div>
+<div style="position: absolute; top: 9202px; left: 317px;"><nobr>and  tag  set  at </nobr></div>
+<div style="position: absolute; top: 9219px; left: 113px;"><nobr>http://www.etl.go.jp/etl/nl/GDA/tagset.html </nobr></div>
+<div style="position: absolute; top: 9236px; left: 100px;"><nobr>Greffenstette,  Gregory: "Producing Intelligent Telegraphic </nobr></div>
+<div style="position: absolute; top: 9253px; left: 113px;"><nobr>Text Reduction  to provide  an  Audio  Scanning  Service </nobr></div>
+<div style="position: absolute; top: 9270px; left: 113px;"><nobr>for  the  Blind",  <i>Workshop  on  Intelligent  Text </i></nobr></div>
+<div style="position: absolute; top: 9286px; left: 112px;"><nobr><i>Summarization, AAA198 Spring Symposium, </i>1998 </nobr></div>
+<div style="position: absolute; top: 9303px; left: 99px;"><nobr>Groarke  Leo  A.,  Tindale  Christopher  A.,  Fisher  Linda. </nobr></div>
+<div style="position: absolute; top: 9320px; left: 113px;"><nobr><i>Good Reasoning Matters.t A  Constructive Approach  to </i></nobr></div>
+<div style="position: absolute; top: 9336px; left: 113px;"><nobr><i>Critical Thinking. </i>Oxford University Press, (1996) 1997 </nobr></div>
+<div style="position: absolute; top: 9353px; left: 99px;"><nobr>Hirschman  Lynette,  Patricia Robinson, John Burger, Marc </nobr></div>
+<div style="position: absolute; top: 9370px; left: 112px;"><nobr>Vilain, "Automatic  Coreference: The Role of Annotating </nobr></div>
+<div style="position: absolute; top: 9386px; left: 112px;"><nobr>Training  Data",  Wkp. <i>on Applying Machine Learning to </i></nobr></div>
+<div style="position: absolute; top: 9403px; left: 111px;"><nobr><i>Discourse  Processing,  AAAI  98  Spring  Symposium, </i></nobr></div>
+<div style="position: absolute; top: 9418px; left: 113px;"><nobr>1998 </nobr></div>
+<div style="position: absolute; top: 9437px; left: 98px;"><nobr>Jewinski Ed &amp; Jewinsky Judi. <i>How to  Write an Executive </i></nobr></div>
+<div style="position: absolute; top: 9453px; left: 111px;"><nobr><i>Summary. </i>U. of Ottawa Press, 1990. </nobr></div>
+<div style="position: absolute; top: 9471px; left: 98px;"><nobr>Judson Horace &amp;  Schaill  William  S.  <i>The  Techniques of </i></nobr></div>
+<div style="position: absolute; top: 9487px; left: 110px;"><nobr><i>Reading.  An  Integrated  Program  for  Improved </i></nobr></div>
+<div style="position: absolute; top: 9504px; left: 111px;"><nobr><i>Comprehension and Speed. </i>Harcourt Brace Jovanovich, </nobr></div>
+<div style="position: absolute; top: 9519px; left: 111px;"><nobr>(1954)  1973 </nobr></div>
+<div style="position: absolute; top: 8598px; left: 477px;"><nobr>Mann,  W.  &amp;  Thompson,  S.,  "Rhetorical  structure  theory: </nobr></div>
+<div style="position: absolute; top: 8615px; left: 490px;"><nobr>Towards a  functional  theory of text organization",  <i>Text </i></nobr></div>
+<div style="position: absolute; top: 8631px; left: 490px;"><nobr>8(3), 241-281 </nobr></div>
+<div style="position: absolute; top: 8648px; left: 476px;"><nobr>Marcu,  Daniel:  The  <i>Rhetorical  Parsing, Summarization, </i></nobr></div>
+<div style="position: absolute; top: 8664px; left: 489px;"><nobr><i>and  Generation  of  Natural  Language  Texts, </i>Ph.D. </nobr></div>
+<div style="position: absolute; top: 8681px; left: 489px;"><nobr>Dissertation, U Toronto, 1997 </nobr></div>
+<div style="position: absolute; top: 8698px; left: 476px;"><nobr>Moulin,  Bernard:  "Discourse  spaces:  a  pragmatic </nobr></div>
+<div style="position: absolute; top: 8714px; left: 490px;"><nobr>interpretation of contexts", <i>ICCS </i>1995 </nobr></div>
+<div style="position: absolute; top: 8731px; left: 476px;"><nobr>Ostler,  Tim:  "TextLight:  Towards  an  Intelligent  Text </nobr></div>
+<div style="position: absolute; top: 8748px; left: 489px;"><nobr>Browser",  dissertation  for  M.Sc.  in  Cognitive  Science </nobr></div>
+<div style="position: absolute; top: 8765px; left: 489px;"><nobr>and  Intelligent  Systems,  U.  of  Westminster,  UK,  Jan </nobr></div>
+<div style="position: absolute; top: 8781px; left: 490px;"><nobr>1998. Online at http://www.eogarch.com </nobr></div>
+<div style="position: absolute; top: 8799px; left: 476px;"><nobr>Sperberg-McQueen,  C.M.  &amp;  Huitfeldt  C.,  "Concurrent </nobr></div>
+<div style="position: absolute; top: 8815px; left: 487px;"><nobr>Document  Hierarchies  in  MECS  and  SGML"  (draft  of </nobr></div>
+<div style="position: absolute; top: 8832px; left: 487px;"><nobr>communication  at  ALLCACH  '98),  1998.  Online  at </nobr></div>
+<div style="position: absolute; top: 8849px; left: 488px;"><nobr>http://lingua.arts.kite.hu/allcach98/abst/abst47.htm </nobr></div>
+<div style="position: absolute; top: 8866px; left: 474px;"><nobr>Text </nobr></div>
+<div style="position: absolute; top: 8866px; left: 544px;"><nobr>Encoding </nobr></div>
+<div style="position: absolute; top: 8866px; left: 644px;"><nobr>Initiative </nobr></div>
+<div style="position: absolute; top: 8866px; left: 740px;"><nobr>(TEI) </nobr></div>
+<div style="position: absolute; top: 8866px; left: 818px;"><nobr>: </nobr></div>
+<div style="position: absolute; top: 8882px; left: 487px;"><nobr>http://www.uie.edu/orgs/tei/ </nobr></div>
+<div style="position: absolute; top: 8900px; left: 474px;"><nobr>Toulmin  Stephen,  Richard  Rieke,  Allan  Janik:  An </nobr></div>
+<div style="position: absolute; top: 8916px; left: 486px;"><nobr><i>Introduction to Reasoning, </i>MacMillan,  1978 /  1984 </nobr></div>
+<div style="position: absolute; top: 8933px; left: 474px;"><nobr>Walton  Douglas,  <i>Argument  Structure.  A  Pragmatic </i></nobr></div>
+<div style="position: absolute; top: 8950px; left: 487px;"><nobr><i>Theory. </i>University of Toronto Press,  1996 </nobr></div>
+</span></font>
+<font face="Times" size="3"><span style="font-size: 14px; font-family: Times;">
+<div style="position: absolute; top: 9603px; left: 442px;"><nobr><b>25 </b></nobr></div>
+</span></font>
+</body></html>

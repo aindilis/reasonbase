@@ -1,0 +1,52 @@
+#!/usr/bin/perl -w
+
+use RB::Wiki::Client;
+use Text::Wrap;
+
+$initial_tab = "";		# Tab before first line
+$subsequent_tab = "";		# All other lines flush left
+
+my $wc = RB::Wiki::Client->new
+  (Host => "wiki.onshore.com",
+   Username => "andrewd",
+   Password => "spandex!");
+
+my $titles =
+  [
+   "onShore SpamAssassin User Guide",
+   "Transitioning from DSPAM to SpamAssassin",
+   "Quick Overview of New Spam Filter",
+   "Detailed Explanation of New Spam Filter",
+   "Spam Fighting with Webmail (webmail.onshore.net)",
+   "Spam Fighting in Outlook (98/2000)",
+   "Spam Fighting in Outlook (2002/2003/XP)",
+   "Spam Fighting in Outlook Express (5/6)",
+   "Spam Fighting in Thunderbird (all versions)",
+   "Spam Fighting in Mozilla (all versions)",
+   "Spam Fighting in Netscape (all versions)",
+   "Spam Fighting in Eudora (all versions)",
+   "Spam Fighting in Apple Mail (OS X)",
+   "Spam Fighting in Entourage (OS X)",
+  ];
+
+exit(0);
+$wc->AddTitles(Titles => $titles);
+
+my @contents;
+my $entries = {};
+foreach my $entry ($wc->Entries->Values) {
+  # $entry->Checkout;
+  $entries->{$entry->Title} = $entry->Text->Contents;
+}
+foreach my $title (@$titles) {
+  $entries->{$title} =~ s/\n\n+/\n\n/g;
+  print $title."\n\n";
+  my $t = $entries->{$title};
+  if ($t) {
+    $t =~ s/\[\[//g;
+    $t =~ s/\]\]//g;
+    print wrap($initial_tab, $subsequent_tab, ($t))."\n";
+  }
+  print ("="x76);
+  print "\n\n";
+}
