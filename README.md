@@ -2,10 +2,6 @@ ReasonBase
 
 Eolas (subsystem)
 
-License: GPLv3
-Copyright: Andrew J. Dougherty
-Date: 2018-02-21
-
 To use for your domain, see:
 
 ./command.sh
